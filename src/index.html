@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <meta name="description" content="Grow your business &amp; brand with premium, custom, native and hybrid mobile web apps designed &amp; developed lovingly by Breadbox. 🍞">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+        <meta property="og:description" content="Grow your business &amp; brand with premium, custom, native and hybrid mobile web apps designed &amp; developed lovingly by Breadbox. 🍞">
+        <meta property="og:site_name" content="Breadbox.io">
+        <meta property="og:title" content="Breadbox.io">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="http://breadbox.io">
+
+        <link rel="canonical" href="http://breadbox.io">
+        <title>Breadbox.io</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <div id="pre-bootstrap-container" class="pre-bootstrap-container">
+            <script type="text/javascript">
+                const appReadyClass = 'app-ready';
+                const body = document.getElementsByTagName('body')[0];
+                const inlinedStyles = document.getElementsByTagName('style')[0];
+                const preBootstrapContainer = document.getElementById('pre-bootstrap-container');
+
+                const handleAppReady = event => {
+                    setTimeout(() => { body.className = appReadyClass; }, 500);
+
+                    setTimeout(() => {
+                        preBootstrapContainer.remove();
+                        if (inlinedStyles) inlinedStyles.remove();
+                    }, 1000);
+                }
+
+                document.addEventListener('appReady' , handleAppReady);
+            </script>
+            <div class="pre-bootstrap-container__content">
+                <h1>Bread<span>box.io</span></h1>
+            </div>
+            <div class="pre-bootstrap-container__spinner">
+                <div class="spinner">
+                    <svg viewBox="0 0 80 80">
+                        <path class="spinner__background" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" />
+                        <path class="spinner__foreground" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" />
+                    </svg>
+                </div>
+            </div>
+            <div class="pre-bootstrap-container__background"></div>
+        </div>
+    </body>
+</html>

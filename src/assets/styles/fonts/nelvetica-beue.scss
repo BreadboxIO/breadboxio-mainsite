@@ -1,0 +1,58 @@
+$font-folder: 'nelvetica-beue/';
+$font-name: 'Nelvetica Beue';
+
+@font-face {
+    font-family: $font-name;
+    font-style: normal;
+    font-weight: normal;
+    src: url($font-path + $font-folder + 'nelvetica-beue.otf') format('opentype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: italic;
+    font-weight: bold;
+    src: url($font-path + $font-folder + 'nelvetica-beue-bold-italic.otf') format('opentype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: normal;
+    font-weight: bold;
+    src: url($font-path + $font-folder + 'nelvetica-beue-bold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: italic;
+    font-weight: normal;
+    src: url($font-path + $font-folder + 'nelvetica-beue-italic.otf') format('opentype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: italic;
+    font-weight: 200;
+    src: url($font-path + $font-folder + 'nelvetica-beue-light-italic.otf') format('opentype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: normal;
+    font-weight: 200;
+    src: url($font-path + $font-folder + 'nelvetica-beue-light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: italic;
+    font-weight: 100;
+    src: url($font-path + $font-folder + 'nelvetica-beue-ultra-light-italic.otf') format('opentype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: normal;
+    font-weight: 100;
+    src: url($font-path + $font-folder + 'nelvetica-beue-ultra-light.otf') format('opentype');
+}

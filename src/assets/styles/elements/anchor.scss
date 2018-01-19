@@ -1,0 +1,12 @@
+@import '../config/variables';
+@import '../mixins/transition';
+
+a {
+    @include transition(color, $ease-default / 2);
+    
+    color: $color-tertiary;
+
+    &:hover {
+        color: darken($color-tertiary, 15%);
+    }
+}

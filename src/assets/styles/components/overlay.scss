@@ -1,0 +1,23 @@
+@import '../config/variables';
+
+$component-selector: overlay;
+
+.#{$component-selector} {
+    @include transition(opacity);
+
+    background: rgba($color-primary, 0.7);
+    bottom: 0;
+    display: block;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 20;
+
+    &--active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}

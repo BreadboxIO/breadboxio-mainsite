@@ -1,0 +1,66 @@
+/* colors
+**********************************************************/
+// base
+$color-black: #000;
+$color-blackType: #3a3a3a;
+$color-danger: #fe5b5c;
+$color-grey: lighten($color-blackType, 30%);
+$color-success: #a0cb4d;
+$color-warning: #fdb634;
+$color-white: #fff;
+
+// social
+$color-facebook: #3b5998;
+$color-google-plus: #f44336;
+$color-pinterest: #c92228;
+$color-twitter: #6cadde;
+
+// branding
+$color-primary: #fdb634;
+$color-secondary: #6a6058;
+$color-tertiary: #009ce4;
+
+/* typography
+**********************************************************/
+// font families
+$font-mono: Monaco, Menlo, Consolas, 'Courier New', monospace;
+$font-primary: 'Rounded Banana', arial, sans-serif;
+$font-secondary: 'Beafis', sans-serif;
+$font-serif: Georgia, 'Times New Roman', Times, serif;
+
+// font sizes
+$font-size-base: 1;
+$line-height-base: 1.4;
+
+/* device widths
+**********************************************************/
+$widescreen: 56.25%;
+$width-mobile: 576px;
+$width-mobile-small: 0;
+$width-tablet: 768px;
+$width-desktop: 992px;
+$width-max: 1200px;
+
+/* spacing
+**********************************************************/
+// scaffolding
+$spacer: 1rem;
+$border-width: 1px;
+$border-radius: $spacer * 0.3;
+
+/* active classes
+**********************************************************/
+$class-app-ready: app-ready;
+
+/* animations
+**********************************************************/
+// duration
+$duration-base: 0.2s;
+
+// easing
+$ease-default: ease;
+
+html {
+    // adjust this value to control entire app REM size
+    font-size: 63.75%;
+}

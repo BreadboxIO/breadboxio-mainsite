@@ -1,0 +1,44 @@
+$font-folder: 'brovoto-condensed/';
+$font-name: 'Brovoto Condensed';
+
+@font-face {
+    font-family: $font-name;
+    font-style: normal;
+    font-weight: normal;
+    src: url($font-path + $font-folder + '/brovoto-condensed-regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: italic;
+    font-weight: bold;
+    src: url($font-path + $font-folder + 'brovoto-condensed-bold-italic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: normal;
+    font-weight: bold;
+    src: url($font-path + $font-folder + 'brovoto-condensed-bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: italic;
+    font-weight: normal;
+    src: url($font-path + $font-folder + 'brovoto-condensed-italic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: italic;
+    font-weight: 200;
+    src: url($font-path + $font-folder + 'brovoto-condensed-light-italic.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: $font-name;
+    font-style: normal;
+    font-weight: 200;
+    src: url($font-path + $font-folder + 'brovoto-condensed-light.ttf') format('truetype');
+}

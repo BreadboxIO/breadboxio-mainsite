@@ -1,0 +1,37 @@
+@import '../config/variables';
+@import '../mixins/transition';
+
+$component-selector: app;
+
+.#{$component-selector} {
+    background-color: $color-secondary;
+    background-image: url('../images/bg-forest.jpg');
+    background-size: cover;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    perspective: 1500px;
+    display: flex;
+
+    &__screen {
+        @include transition(#{'transform, border-radius'}, $duration-base * 3);
+
+        border-radius: 0;
+        height: 100%;
+        left: 0;
+        position: fixed;
+        position: relative;
+        top: 0;
+        transform-origin: 50% 50%;
+        width: 100%;
+        z-index: 20;
+
+        .#{$component-selector}--navigation-active & {
+            border-radius: $border-radius * 3;
+            overflow: hidden;
+            transform: translateX(-40%) rotateY(45deg) translateZ(-50px);
+        }
+    }
+}
