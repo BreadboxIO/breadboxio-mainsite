@@ -21,19 +21,19 @@ First, you'll need to clone this repo to your working directory on your local ma
 1. Open your command line.
 2. Navigate to your working directory.
 3. Clone this repo to your working directory.
-4. Navigate inside the breadboxio.github.io directory.
+4. Navigate inside the breadboxio-mainsite directory.
 5. Install the dependencies.
 
 ```
 cd /path/to/working/directory
-git clone https://github.com/BreadboxIO/breadboxio.github.io
+git clone https://github.com/BreadboxIO/breadboxio-mainsite
 cd /breadbox-mainsite
 npm install
 ```
 
 ## Development
 
-During development you can start the app using `npm run start`.  This will begin running the app at a specificed local server (typically [localhost:8080/](localhost:8080/)).  You can then view the app in any web browser or browser simulator.  Any time you make a change to the `src` folder while the app is running, the app will automatically refresh in your browser.
+During development you can start the app using `npm run start`.  This will begin running the app at a specificed local server (typically [localhost:8080/](localhost:8080/)).  You can then view the app in any web browser or browser simulator.  Any time you make a change to the `src` folder while the app is running, the app will automatically update in your browser.
 
 ```
 npm run start
@@ -41,7 +41,11 @@ npm run start
 
 ## Deployment
 
-After completing development you can run `npm run build`.  This will minifiy and compile the `src` folder into a `docs` folder.  The contents of the `docs` folder is published as the GitHub Pages site.  For more details about publishing to GitHub Pages click [here](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch).
+After completing development you can run `npm run build`.  This will minifiy and compile the `src` folder into a `public` folder.  The contents of the `public` folder is used for publishing as the [GitHub Pages site](https://github.com/BreadboxIO/breadboxio.github.io).
+
+Once the build task is complete, commit and push the contents of the `public` folder to the [breadboxio.github.io](https://github.com/BreadboxIO/breadboxio.github.io) repository on the `master` branch.  This will automatically update the mainsite at [breadbox.io](http://breadbox.io).
+
+For more details about publishing to GitHub Pages click [here](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch).
 
 ```
 npm run build
