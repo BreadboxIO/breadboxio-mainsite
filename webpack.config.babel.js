@@ -1,4 +1,5 @@
 import clean from './webpack/clean';
+import copyCNAME from './webpack/copy-cname';
 import devServer from './webpack/dev-server';
 import extractSCSS from './webpack/extract-scss';
 import generateFavicons from './webpack/generate-favicons';
@@ -20,13 +21,13 @@ const merge = require('webpack-merge');
 
 const ROOT_PATHS = {
     src: path.join(__dirname, 'src'),
-    public: path.join(__dirname, 'docs')
+    public: path.join(__dirname, 'public')
 };
 
 const PATHS = {
     fonts: path.join(ROOT_PATHS.src, 'assets/fonts'),
     images: path.join(ROOT_PATHS.src, 'assets/images'),
-    pdfs: path.join(__dirname, 'pdfs'),
+    cname: path.join(__dirname, 'CNAME'),
     styles: [
         path.join(ROOT_PATHS.src, 'assets/styles', 'critical.scss'),
         path.join(ROOT_PATHS.src, 'assets/styles', 'index.scss')
@@ -91,6 +92,10 @@ export default function(env) {
             minifyJavascript({ useSourceMap: false }),
             extractSCSS(PATHS.style),
             // purifyCSS([ROOT_PATHS.src]),
+            copyCNAME({
+                sourcePath: PATHS.cname,
+                destPath: ROOT_PATHS.public
+            })
         ]);
     }
 
