@@ -1,6 +1,6 @@
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
-import { App } from './components/app';
+import { Root } from './components/root';
 import { configureStore } from './util/configure-store';
 import createHistory from 'history/createBrowserHistory';
 import { render } from 'react-dom';
@@ -15,11 +15,11 @@ const init = Component => render(
     document.getElementById('app')
 );
 
-init(App);
+init(Root);
 
 if (module.hot) {
-    module.hot.accept('./components/app', () => {
-        const nextApp = require('./components/app').App;
-        init(nextApp);
+    module.hot.accept('./components/root', () => {
+        const nextRoot = require('./components/root').Root;
+        init(nextRoot);
     });
 }

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Navigation } from './navigation';
 import { NavigationToggle } from './navigation-toggle';
 import { Overlay } from './overlay';
-import { SplashScreen } from '../screens/splash';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
 
@@ -26,13 +26,14 @@ export class App extends Component {
     }
 
     render() {
+        const { children } = this.props;
         const { navigationActive } = this.state;
         
         return (
             <div className={`app${navigationActive ? ' app--navigation-active' : ''}`}>
                 <div className='app__screen'>
                     <Overlay active={navigationActive} onClick={this.toggleNavigation} />
-                    <SplashScreen />
+                    {children}
                 </div>
                 <NavigationToggle onClick={this.toggleNavigation} navigationActive={navigationActive} />
                 <Navigation active={navigationActive} />
@@ -40,3 +41,7 @@ export class App extends Component {
         );
     }
 }
+
+App.propTypes = {
+    children: PropTypes.oneOfType([ PropTypes.array, PropTypes.element ])
+};

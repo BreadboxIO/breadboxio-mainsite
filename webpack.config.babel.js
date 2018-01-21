@@ -38,7 +38,7 @@ const PATHS = {
 const common = merge([
     {
         entry: {
-            app: path.join(ROOT_PATHS.src, 'index.js'),
+            app: ['react-hot-loader/patch', path.join(ROOT_PATHS.src, 'index.js')],
             style: PATHS.styles
         },
         output: {
