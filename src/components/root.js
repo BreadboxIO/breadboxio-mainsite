@@ -4,6 +4,7 @@ import { App } from './app';
 import { ConnectedRouter } from 'react-router-redux';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
+import { RideOrDieAppScreen } from '../screens/ride-or-die-app';
 import { RideOrDiePrivacyPolicyScreen } from '../screens/ride-or-die-privacy-policy';
 import { Route } from 'react-router';
 import { SplashScreen } from '../screens/splash';
@@ -18,6 +19,7 @@ export class Root extends Component {
                 <ConnectedRouter history={history}>
                     <App>
                         <Route exact path='/' component={SplashScreen} />
+                        <Route path='/ride-or-die-app' component={RideOrDieAppScreen} />
                         <Route path='/ride-or-die-privacy-policy' component={RideOrDiePrivacyPolicyScreen} />
                     </App>
                 </ConnectedRouter>

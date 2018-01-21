@@ -10,8 +10,6 @@ export class App extends Component {
     constructor(props) {
         super(props);
         this.state = { navigationActive: false };
-
-        this.toggleNavigation = this.toggleNavigation.bind(this);
     }
 
     componentDidMount() {
@@ -21,7 +19,11 @@ export class App extends Component {
         document.dispatchEvent(event);
     }
 
-    toggleNavigation() {
+    closeNavigation = () => {
+        this.setState({ navigationActive: false });
+    }
+
+    toggleNavigation = () => {
         this.setState({ navigationActive: !this.state.navigationActive });
     }
 
@@ -36,7 +38,7 @@ export class App extends Component {
                     {children}
                 </div>
                 <NavigationToggle onClick={this.toggleNavigation} navigationActive={navigationActive} />
-                <Navigation active={navigationActive} />
+                <Navigation active={navigationActive} closeNavigation={this.closeNavigation} />
             </div>
         );
     }

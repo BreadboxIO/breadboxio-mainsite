@@ -11,13 +11,20 @@
 // elements
 @import 'elements/anchor';
 @import 'elements/body';
+@import 'elements/button';
 @import 'elements/headings';
-@import 'elements/paragraph';
-@import 'elements/lists';
 @import 'elements/horizontal-rule';
+@import 'elements/lists';
+@import 'elements/paragraph';
+@import 'elements/sup';
 
 // components
 @import 'components/app';
+@import 'components/app-detail';
+@import 'components/app-header';
+@import 'components/app-icon';
+@import 'components/app-screenshot';
+@import 'components/app-title';
 @import 'components/navigation';
 @import 'components/navigation-toggle';
 @import 'components/overlay';

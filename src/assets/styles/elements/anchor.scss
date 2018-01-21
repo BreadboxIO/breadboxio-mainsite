@@ -3,7 +3,8 @@
 
 a {
     @include transition(color, $ease-default / 2);
-    
+
+    border-radius: 0;
     color: $color-tertiary;
 
     &:hover {
