@@ -28,7 +28,6 @@ const PATHS = {
     cname: path.join(__dirname, 'CNAME'),
     fonts: path.join(ROOT_PATHS.src, 'assets/fonts'),
     images: path.join(ROOT_PATHS.src, 'assets/images'),
-    notFound: path.join(ROOT_PATHS.src, '404.html'),
     styles: [
         path.join(ROOT_PATHS.src, 'assets/styles', 'critical.scss'),
         path.join(ROOT_PATHS.src, 'assets/styles', 'index.scss')
@@ -47,10 +46,7 @@ const common = merge([
         },
         plugins: [ new webpack.optimize.CommonsChunkPlugin({ name: ['app'] }) ]
     },
-    generateHTML({
-        title: 'Breadbox.io',
-        template: path.join(ROOT_PATHS.src, 'index.html')
-    }),
+    generateHTML({ title: 'Breadbox.io', template: path.join(ROOT_PATHS.src, 'index.html') }),
     generateFavicons({ sourcePath: path.join(PATHS.images, 'favicon.png') }),
     loadFonts({
         options: {
@@ -90,17 +86,11 @@ export default function(env) {
                 'production'
             ),
             clean(ROOT_PATHS.public),
+            copyFile({ sourcePath: PATHS.cname, destPath: ROOT_PATHS.public }),
+            copyFile({ sourcePath: path.join(__dirname, '404.html'), destPath: ROOT_PATHS.public }),
             minifyJavascript({ useSourceMap: false }),
-            extractSCSS(PATHS.style),
+            extractSCSS(PATHS.style)
             // purifyCSS([ROOT_PATHS.src]),
-            copyFile({
-                sourcePath: PATHS.cname,
-                destPath: ROOT_PATHS.public
-            }),
-            copyFile({
-                sourcePath: PATHS.notFound,
-                destPath: ROOT_PATHS.public
-            })
         ]);
     }
 

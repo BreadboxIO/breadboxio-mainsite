@@ -10,8 +10,8 @@ export default ({ host, port }) => {
             // in handy in more complicated setups.
             historyApiFallback: true,
             stats: 'errors-only', // Display only errors to reduce the amount of output.
-            host: host, // Defaults to `localhost`
-            port: port, // Defaults to 8080
+            host, // Defaults to `localhost`
+            port, // Defaults to 8080
             watchOptions: {
                 aggregateTimeout: 300, // Delay the rebuild after the first change
                 poll: 1000 // Poll using interval (in ms, accepts boolean too)

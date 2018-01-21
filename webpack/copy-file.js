@@ -1,7 +1,7 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 export default ({sourcePath, destPath}) => {
-    
+
     return {
         plugins: [
             new CopyWebpackPlugin([

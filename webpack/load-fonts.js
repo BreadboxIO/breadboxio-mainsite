@@ -5,7 +5,7 @@ export default ({ include, exclude, options } = {}) => {
             rules: [
                 {
                     test: /\.(eot|otf|svg|ttf|woff|woff2)$/,
-                    include: include,
+                    include,
                     exclude,
                     use: {
                         loader: 'url-loader',
