@@ -1,5 +1,5 @@
 import clean from './webpack/clean';
-import copyCNAME from './webpack/copy-cname';
+import copyFile from './webpack/copy-file';
 import devServer from './webpack/dev-server';
 import extractSCSS from './webpack/extract-scss';
 import generateFavicons from './webpack/generate-favicons';
@@ -25,9 +25,10 @@ const ROOT_PATHS = {
 };
 
 const PATHS = {
+    cname: path.join(__dirname, 'CNAME'),
     fonts: path.join(ROOT_PATHS.src, 'assets/fonts'),
     images: path.join(ROOT_PATHS.src, 'assets/images'),
-    cname: path.join(__dirname, 'CNAME'),
+    notFound: path.join(ROOT_PATHS.src, '404.html'),
     styles: [
         path.join(ROOT_PATHS.src, 'assets/styles', 'critical.scss'),
         path.join(ROOT_PATHS.src, 'assets/styles', 'index.scss')
@@ -92,8 +93,12 @@ export default function(env) {
             minifyJavascript({ useSourceMap: false }),
             extractSCSS(PATHS.style),
             // purifyCSS([ROOT_PATHS.src]),
-            copyCNAME({
+            copyFile({
                 sourcePath: PATHS.cname,
+                destPath: ROOT_PATHS.public
+            }),
+            copyFile({
+                sourcePath: PATHS.notFound,
                 destPath: ROOT_PATHS.public
             })
         ]);

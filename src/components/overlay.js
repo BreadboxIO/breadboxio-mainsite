@@ -15,12 +15,10 @@ export class Overlay extends Component {
 
 Overlay.defaultProps = {
     active: false,
-    light: false,
     onClick: () => {}
 };
 
 Overlay.propTypes = {
     active: PropTypes.bool,
-    light: PropTypes.bool,
     onClick: PropTypes.func
 };
