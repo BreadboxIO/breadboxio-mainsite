@@ -8,51 +8,5 @@ $component-selector: app-header;
     box-sizing: border-box;
     flex-direction: row;
     margin-bottom: $spacer * 2;
-    max-width: $width-desktop;
-    padding: 0 $spacer * 2;
     width: 100%;
-
-    &__download {
-        margin-left: auto;
-
-        a {
-            @include font-size(1.8);
-            @include line-height(2.2);
-            @include transition(#{'background, color'});
-
-            padding: $spacer;
-            border-radius: $border-radius;
-            border: $border-width solid $color-tertiary;
-            text-decoration: none;
-
-            &:hover {
-                color: $color-white;
-                background: $color-tertiary;
-            }
-
-            @media screen and (max-width: $width-mobile) {
-                @include font-size(1.2);
-                @include line-height(1.6);
-
-                padding: $spacer / 2;
-                font-weight: bold;
-                text-transform: uppercase;
-            }
-        }
-
-        @media screen and (max-width: $width-mobile) {
-            margin-left: $spacer;
-        }
-    }
-
-    @media screen and (max-width: $width-mobile) {
-        background: $color-white;
-        left: 0;
-        margin-bottom: 0;
-        padding: $spacer;
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: 10;
-    }
 }

@@ -15,9 +15,6 @@ export class AppHeader extends Component {
                 <div>
                     <AppTitle appIconSrc={appIconSrc} name={name} />
                 </div>
-                <div className='app-header__download'>
-                    <a href='#' target='_blank'>Download</a>
-                </div>
             </div>
         );
     }

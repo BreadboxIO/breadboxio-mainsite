@@ -7,13 +7,12 @@ $component-selector: app-title;
     display: flex;
     flex-direction: row;
 
-    a {
-        color: inherit;
-        text-decoration: none;
-    }
-
     .app-icon {
         margin-right: $spacer;
+
+        @media screen and (max-width: $width-mobile) {
+            margin-right: 0;
+        }
     }
 
     &__breadbox-logo {
@@ -21,22 +20,24 @@ $component-selector: app-title;
     }
 
     h1 {
+        @include font-size(4.8);
+
+        line-height: $spacer * 5;
         text-transform: lowercase;
         margin-bottom: 0;
 
         @media screen and (max-width: $width-mobile) {
-            @include font-size(2.8);
-
-            line-height: 100%;
-            letter-spacing: -1px;
+            @include font-size(3.2);
+            @include line-height(3.6);
         }
     }
 
-    h2 {
-        font-family: $font-app-detail;
+    @media screen and (max-width: $width-tablet) {
+        justify-content: center;
+    }
 
-        @media screen and (max-width: $width-mobile) {
-            display: none;
-        }
+    @media screen and (max-width: $width-mobile) {
+        flex-direction: column;
+        align-items: center;
     }
 }

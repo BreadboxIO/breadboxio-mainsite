@@ -21,7 +21,7 @@ $component-selector: app;
         border-radius: 0;
         height: 100%;
         left: 0;
-        position: fixed;
+        overflow-y: auto;
         position: relative;
         top: 0;
         transform-origin: 50% 50%;

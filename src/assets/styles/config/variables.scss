@@ -4,7 +4,8 @@
 $color-black: #000;
 $color-blackType: #444;
 $color-danger: #fe5b5c;
-$color-grey: lighten($color-blackType, 30%);
+$color-grey: #b3b3b3;
+$color-grey-light: lighten($color-grey, 28%);
 $color-success: #a0cb4d;
 $color-warning: #fdb634;
 $color-white: #fff;

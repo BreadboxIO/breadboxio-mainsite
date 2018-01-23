@@ -5,11 +5,11 @@ $component-selector: app-icon;
 .#{$component-selector} {
     border-radius: $border-radius * 2;
     background-size: cover;
-    height: $spacer * 5;
-    width: $spacer * 5;
+    height: $spacer * 6;
+    width: $spacer * 6;
 
     @media screen and (max-width: $width-mobile) {
-        height: $spacer * 3;
-        width: $spacer * 3;
+        height: $spacer * 4;
+        width: $spacer * 4;
     }
 }
