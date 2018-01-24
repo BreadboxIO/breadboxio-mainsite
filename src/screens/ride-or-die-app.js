@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { AppDetailCallToAction } from '../components/app-detail-call-to-action';
+import { AppDetailFooter } from '../components/app-detail-footer';
 import { AppDetailHero } from '../components/app-detail-hero';
 import { AppDetailReviews } from '../components/app-detail-reviews';
 
@@ -28,6 +29,7 @@ export class RideOrDieAppScreen extends Component {
                     appName={appName}
                     appStoreLink={appStoreLink}
                 />
+                <AppDetailFooter />
             </div>
         );
     }
