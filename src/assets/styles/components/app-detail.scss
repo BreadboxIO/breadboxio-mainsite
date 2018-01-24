@@ -1,13 +1,10 @@
 @import '../config/variables';
 @import '../mixins/font-size';
 @import '../mixins/line-height';
-@import '../mixins/momentum-scrolling';
 
 $component-selector: app-detail;
 
 .#{$component-selector} {
-    @include momentum-scrolling();
-
     align-items: center;
     background: $color-white;
     box-sizing: border-box;

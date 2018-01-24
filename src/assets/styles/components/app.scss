@@ -1,5 +1,6 @@
 @import '../config/variables';
 @import '../mixins/transition';
+@import '../mixins/momentum-scrolling';
 
 $component-selector: app;
 
@@ -17,6 +18,7 @@ $component-selector: app;
 
     &__screen {
         @include transition(#{'transform, border-radius'}, $duration-base * 3);
+        @include momentum-scrolling();
 
         border-radius: 0;
         height: 100%;

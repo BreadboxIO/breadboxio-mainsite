@@ -2342,26 +2342,30 @@
  *
  * Copyright (c) 2016 Daniel Eden
  */
-.animated, .navigation a,
+.animated, .app-detail-hero__content .app-title, .app-detail-hero__content__leader, .app-detail-hero__content__store-links, .app-detail-hero__image, .navigation a,
 .navigation button, .app-ready .pre-bootstrap-container__spinner, .app-ready .pre-bootstrap-container h1, .app-ready .splash h2, .app-ready .splash__logo {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both; }
 
-.animated.infinite, .navigation a.infinite,
+.animated.infinite, .app-detail-hero__content .infinite.app-title, .infinite.app-detail-hero__content__leader, .infinite.app-detail-hero__content__store-links, .infinite.app-detail-hero__image, .navigation a.infinite,
 .navigation button.infinite, .app-ready .infinite.pre-bootstrap-container__spinner, .app-ready .pre-bootstrap-container h1.infinite, .app-ready .splash h2.infinite, .app-ready .infinite.splash__logo {
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite; }
 
-.animated.hinge, .navigation a.hinge,
+.animated.hinge, .app-detail-hero__content .hinge.app-title, .hinge.app-detail-hero__content__leader, .hinge.app-detail-hero__content__store-links, .hinge.app-detail-hero__image, .navigation a.hinge,
 .navigation button.hinge, .app-ready .hinge.pre-bootstrap-container__spinner, .app-ready .pre-bootstrap-container h1.hinge, .app-ready .splash h2.hinge, .app-ready .hinge.splash__logo {
   -webkit-animation-duration: 2s;
   animation-duration: 2s; }
 
-.animated.flipOutX, .navigation a.flipOutX,
+.animated.flipOutX, .app-detail-hero__content .flipOutX.app-title, .flipOutX.app-detail-hero__content__leader, .flipOutX.app-detail-hero__content__store-links, .flipOutX.app-detail-hero__image, .navigation a.flipOutX,
 .navigation button.flipOutX, .app-ready .flipOutX.pre-bootstrap-container__spinner, .app-ready .pre-bootstrap-container h1.flipOutX, .app-ready .splash h2.flipOutX, .app-ready .flipOutX.splash__logo,
 .animated.flipOutY,
+.app-detail-hero__content .flipOutY.app-title,
+.flipOutY.app-detail-hero__content__leader,
+.flipOutY.app-detail-hero__content__store-links,
+.flipOutY.app-detail-hero__image,
 .navigation a.flipOutY,
 .navigation button.flipOutY,
 .app-ready .flipOutY.pre-bootstrap-container__spinner,
@@ -2369,6 +2373,10 @@
 .app-ready .splash h2.flipOutY,
 .app-ready .flipOutY.splash__logo,
 .animated.bounceIn,
+.app-detail-hero__content .bounceIn.app-title,
+.bounceIn.app-detail-hero__content__leader,
+.bounceIn.app-detail-hero__content__store-links,
+.bounceIn.app-detail-hero__image,
 .navigation a.bounceIn,
 .navigation button.bounceIn,
 .app-ready .bounceIn.pre-bootstrap-container__spinner,
@@ -2378,6 +2386,10 @@
 .app-ready .splash h2.splash__logo,
 .app-ready .splash__logo,
 .animated.bounceOut,
+.app-detail-hero__content .bounceOut.app-title,
+.bounceOut.app-detail-hero__content__leader,
+.bounceOut.app-detail-hero__content__store-links,
+.bounceOut.app-detail-hero__image,
 .navigation a.bounceOut,
 .navigation button.bounceOut,
 .app-ready .bounceOut.pre-bootstrap-container__spinner,
@@ -3183,7 +3195,7 @@
   to {
     opacity: 1; } }
 
-.fadeIn {
+.fadeIn, .app-detail-hero__content .app-title, .app-detail-hero__content__leader, .app-detail-hero__content__store-links, .app-detail-hero__image {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn; }
 
@@ -3610,7 +3622,7 @@
     -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in; } }
 
-.animated.flip, .navigation a.flip,
+.animated.flip, .app-detail-hero__content .flip.app-title, .flip.app-detail-hero__content__leader, .flip.app-detail-hero__content__store-links, .flip.app-detail-hero__image, .navigation a.flip,
 .navigation button.flip, .app-ready .flip.pre-bootstrap-container__spinner, .app-ready .pre-bootstrap-container h1.flip, .app-ready .splash h2.flip, .app-ready .flip.splash__logo {
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
@@ -5515,6 +5527,8 @@ html {
     transition-duration: 0.6s;
     transition-property: transform, border-radius;
     transition-timing-function: ease;
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
     border-radius: 0;
     height: 100%;
     left: 0;
@@ -5528,21 +5542,6 @@ html {
       border-radius: 0.9rem;
       overflow: hidden;
       transform: translateX(-40%) rotateY(45deg) translateZ(-50px); }
-
-/* colors
-**********************************************************/
-/* typography
-**********************************************************/
-/* device widths
-**********************************************************/
-/* spacing
-**********************************************************/
-/* active classes
-**********************************************************/
-/* animations
-**********************************************************/
-html {
-  font-size: 63.75%; }
 
 /* colors
 **********************************************************/
@@ -5696,6 +5695,107 @@ html {
 html {
   font-size: 63.75%; }
 
+.app-detail-features {
+  align-items: center;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 8rem 2rem 0;
+  text-align: center;
+  width: 100%; }
+  .app-detail-features > div {
+    max-width: 992px; }
+  .app-detail-features__feature {
+    box-sizing: border-box;
+    float: left;
+    padding: 1rem;
+    width: 33.33333%; }
+    .app-detail-features__feature .fa {
+      font-size: 60px;
+      font-size: 6rem;
+      line-height: 60px;
+      line-height: 6rem;
+      margin-bottom: 1rem; }
+    .app-detail-features__feature h3 {
+      margin-bottom: 1rem; }
+    @media screen and (max-width: 768px) {
+      .app-detail-features__feature {
+        float: none;
+        width: 100%; } }
+  .app-detail-features__images {
+    display: flex;
+    flex: 1;
+    height: 576px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: -5rem; }
+    .app-detail-features__images > div {
+      background-color: transparent;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      flex: 1;
+      height: 100%;
+      max-width: 320px;
+      position: relative;
+      width: 100%; }
+      .app-detail-features__images > div:nth-child(1), .app-detail-features__images > div:nth-child(3) {
+        max-width: 270px;
+        right: -10%;
+        background-position: center 4rem; }
+        @media screen and (max-width: 768px) {
+          .app-detail-features__images > div:nth-child(1), .app-detail-features__images > div:nth-child(3) {
+            max-width: 230px;
+            background-position: center; } }
+      .app-detail-features__images > div:nth-child(2) {
+        z-index: 10; }
+      .app-detail-features__images > div:nth-child(3) {
+        right: auto;
+        left: -10%; }
+    @media screen and (max-width: 768px) {
+      .app-detail-features__images {
+        margin: 0 0 -10%; } }
+    @media screen and (max-width: 576px) {
+      .app-detail-features__images {
+        margin: -25% 0 -50%; } }
+  @media screen and (max-width: 576px) {
+    .app-detail-features {
+      padding: 2rem 2rem 4rem; } }
+
+/* colors
+**********************************************************/
+/* typography
+**********************************************************/
+/* device widths
+**********************************************************/
+/* spacing
+**********************************************************/
+/* active classes
+**********************************************************/
+/* animations
+**********************************************************/
+html {
+  font-size: 63.75%; }
+
+/* colors
+**********************************************************/
+/* typography
+**********************************************************/
+/* device widths
+**********************************************************/
+/* spacing
+**********************************************************/
+/* active classes
+**********************************************************/
+/* animations
+**********************************************************/
+html {
+  font-size: 63.75%; }
+
 .app-detail-footer {
   display: flex;
   flex-direction: column;
@@ -5768,7 +5868,8 @@ html {
   .app-detail-hero__content {
     flex: 1; }
     .app-detail-hero__content .app-title {
-      margin-bottom: 8rem; }
+      margin-bottom: 8rem;
+      animation-delay: 0.4s; }
       @media screen and (max-width: 768px) {
         .app-detail-hero__content .app-title {
           margin-bottom: 4rem; } }
@@ -5776,6 +5877,7 @@ html {
         .app-detail-hero__content .app-title {
           margin-bottom: 2rem; } }
     .app-detail-hero__content__leader {
+      animation-delay: 0.46s;
       margin-bottom: 4rem; }
       .app-detail-hero__content__leader h1 {
         font-size: 56px;
@@ -5799,6 +5901,7 @@ html {
         .app-detail-hero__content__leader {
           margin-bottom: 2rem; } }
     .app-detail-hero__content__store-links {
+      animation-delay: 0.52s;
       margin-bottom: 8rem; }
       .app-detail-hero__content__store-links a {
         transition-duration: 0.2s;
@@ -5823,6 +5926,7 @@ html {
         .app-detail-hero__content__store-links {
           margin-bottom: 4rem; } }
   .app-detail-hero__image {
+    animation-delay: 0.58s;
     flex: 1;
     max-width: 320px;
     width: 100%;
@@ -5857,24 +5961,8 @@ html {
 html {
   font-size: 63.75%; }
 
-/* colors
-**********************************************************/
-/* typography
-**********************************************************/
-/* device widths
-**********************************************************/
-/* spacing
-**********************************************************/
-/* active classes
-**********************************************************/
-/* animations
-**********************************************************/
-html {
-  font-size: 63.75%; }
-
 .app-detail-reviews {
   align-items: center;
-  background-color: #fafafa;
   box-sizing: border-box;
   color: #444;
   display: flex;
@@ -6068,7 +6156,7 @@ html {
     transition-timing-function: ease;
     color: #fff;
     display: block;
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 0 1.5rem 1rem;
     text-decoration: none;
     opacity: 0;
     position: relative; }
@@ -6117,6 +6205,9 @@ html {
   .navigation--active a,
   .navigation--active button {
     opacity: 1; }
+  @media screen and (max-width: 576px) {
+    .navigation {
+      letter-spacing: 2px; } }
 
 /* colors
 **********************************************************/

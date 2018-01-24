@@ -30,7 +30,7 @@ $component-selector: navigation;
 
         color: $color-white;
         display: block;
-        padding: $spacer * 1.5 $spacer;
+        padding: $spacer * 1.5 0 $spacer * 1.5 $spacer;
         text-decoration: none;
         opacity: 0;
         position: relative;
@@ -76,5 +76,9 @@ $component-selector: navigation;
 
             opacity: 1;
         }
+    }
+
+    @media screen and (max-width: $width-mobile) {
+        letter-spacing: 2px;
     }
 }
