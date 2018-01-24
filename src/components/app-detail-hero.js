@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 import { AppTitle } from './app-title';
-import { Icon } from './Icon';
+import { Icon } from './icon';
 import PropTypes from 'prop-types';
 
 export class AppDetailHero extends Component {
 
     render() {
-        const { appName, appIconSrc, heroImgSrc, appStoreLink } = this.props;
+        const { appName, appIconSrc, heroImgSrc, appStoreLink, googlePlayLink } = this.props;
 
         return (
             <div className='app-detail-hero'>
@@ -21,8 +21,8 @@ export class AppDetailHero extends Component {
                         <p>Instantly know <em>wheather</em> the <em>weather</em> is alright for riding.</p>
                     </div>
                     <div className='app-detail-hero__content__store-links'>
-                        {appStoreLink && <a href={appStoreLink}><Icon name='apple' /> App Store</a>}
-                        <a href='#'><Icon name='android' /> Google Play</a>
+                        {appStoreLink && <a href={appStoreLink} target='_blank'><Icon name='apple' /> App Store</a>}
+                        {googlePlayLink && <a href={googlePlayLink} target='_blank'><Icon name='android' /> Google Play</a>}
                     </div>
                 </div>
                 <div className='app-detail-hero__image'>
@@ -37,12 +37,14 @@ AppDetailHero.defaultProps = {
     appName: '',
     appIconSrc: '',
     heroImgSrc: '',
-    appStoreLink: ''
+    appStoreLink: '',
+    googlePlayLink: ''
 };
 
 AppDetailHero.propTypes = {
     appName: PropTypes.string,
     appIconSrc: PropTypes.string,
     heroImgSrc: PropTypes.string,
-    appStoreLink: PropTypes.string
+    appStoreLink: PropTypes.string,
+    googlePlayLink: PropTypes.string
 };
