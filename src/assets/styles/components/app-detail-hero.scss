@@ -11,7 +11,7 @@ $component-selector: app-detail-hero;
     width: 100%;
     box-sizing: border-box;
     max-width: $width-desktop;
-    padding: $spacer * 7 $spacer * 2 0;
+    padding: $spacer * 7 $spacer * 2 $spacer * 2;
 
     &__content {
         flex: 1;
@@ -111,7 +111,9 @@ $component-selector: app-detail-hero;
         display: flex;
 
         > div {
-            background-size: cover;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             height: 100%;
             width: 100%;
             flex: 1;
