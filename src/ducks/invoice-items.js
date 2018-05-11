@@ -5,7 +5,7 @@ import { InvoiceItem } from '../classes/invoice-item';
 export const selectInvoiceItems = state => state.invoiceItemsState.data;
 
 const DEFAULT_STATE = {
-    data: [ new InvoiceItem(), new InvoiceItem(), new InvoiceItem(), new InvoiceItem() ]
+    data: [ new InvoiceItem() ]
 };
 
 const RESET = 'invoice-items/RESET';

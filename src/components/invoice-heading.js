@@ -4,8 +4,10 @@ import { BrandLogo } from './brand-logo';
 import { BrandTagline } from './brand-tagline';
 import { BrandTitle } from './brand-title';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getClientNumber } from '../util/get-client-number';
 import moment from 'moment';
+import { selectClientName } from '../ducks/client';
 
 const DATE_FORMAT = 'MMMM D, YYYY';
 
@@ -55,3 +57,11 @@ InvoiceHeading.defaultProps = {
 InvoiceHeading.propTypes = {
     clientName: PropTypes.string.isRequired
 };
+
+const mapStateToProps = state => {
+    return {
+        clientName: selectClientName(state)
+    };
+};
+
+export default connect(mapStateToProps, {})(InvoiceHeading);
