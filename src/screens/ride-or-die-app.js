@@ -8,7 +8,7 @@ import { Icon } from '../components/icon';
 
 export class RideOrDieAppScreen extends Component {
 
-    render() {
+    render = () => {
         const appName = 'Ride or Die';
         const appStoreLink = 'https://itunes.apple.com/app/id1265169204';
         const primaryColor = '#ffbb37';

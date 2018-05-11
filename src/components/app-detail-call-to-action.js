@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 export class AppDetailCallToAction extends Component {
 
-    render() {
+    render = () => {
         const { appName, appStoreLink, backgroundColor, googlePlayLink } = this.props;
 
         const showIOS = isIOS && appStoreLink;

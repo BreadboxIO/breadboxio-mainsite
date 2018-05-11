@@ -1,21 +1,13 @@
-import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
+import React from 'react';
 
-export class Icon extends Component {
+export const Icon = props => {
+    const { name, color } = props;
 
-    render() {
-        const { name, color } = this.props;
-
-        return (
-            <i
-                className={`fa fa-fw fa-${name}`}
-                aria-hidden='true'
-                style={{ color }}
-            />
-        );
-    }
-}
+    return (
+        <i className={`fa fa-fw fa-${name}`} aria-hidden='true' style={{ color }} />
+    );
+};
 
 Icon.defaultProps = {
     color: '',

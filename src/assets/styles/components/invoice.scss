@@ -1,0 +1,26 @@
+@import '../mixins/font-size';
+@import '../mixins/line-height';
+@import '../config/variables';
+
+$component-selector: invoice;
+
+.#{$component-selector} {
+    background: $color-white;
+    max-width: $width-max;
+    margin: 0 auto;
+
+    h1 {
+        @include font-size(1.6);
+        @include line-height(1.6);
+
+        letter-spacing: -1px;
+        margin-bottom: $spacer / 2;
+    }
+
+    h2 {
+        @include font-size(1.4);
+        @include line-height(1.4);
+
+        margin-bottom: $spacer / 2;
+    }
+}

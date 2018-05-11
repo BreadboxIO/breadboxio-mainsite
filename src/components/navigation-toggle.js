@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
+import React from 'react';
 
-export class NavigationToggle extends Component {
+export const NavigationToggle = props => {
+    const { onClick, navigationActive } = props;
 
-    render() {
-        const { onClick, navigationActive } = this.props;
-
-        return (
-            <button className={`navigation-toggle${navigationActive ? ' navigation-toggle--navigation-active' : ''}`} onClick={onClick}>
-                <span />
-            </button>
-        );
-    }
-}
+    return (
+        <button className={`navigation-toggle${navigationActive ? ' navigation-toggle--navigation-active' : ''}`} onClick={onClick}>
+            <span />
+        </button>
+    );
+};
 
 NavigationToggle.defaultProps = {
     onClick: () => {},

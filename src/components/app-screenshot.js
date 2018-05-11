@@ -20,7 +20,7 @@ export class AppScreenshot extends Component {
         return result;
     }
 
-    render() {
+    render = () => {
         const { images } = this.props;
 
         if (images.length < 1) return null;

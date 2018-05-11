@@ -59,6 +59,7 @@
     "animate.css": "^3.6.1",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
+    "moment": "^2.22.1",
     "normalize.css": "^8.0.0",
     "react": "^16.2.0",
     "react-device-detect": "^0.1.0",

@@ -32,6 +32,32 @@ $exponential-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
         }
     }
 
+    .brand-title {
+        @include font-size(8);
+        @include line-height(8);
+
+        color: $color-primary;
+        font-weight: bold;
+        left: -3px;
+        position: relative;
+
+        .#{$class-app-ready} & {
+            @extend .animated;
+            @extend .fadeOut;
+        }
+
+        span {
+            color: $color-secondary;
+        }
+
+        @media screen and (max-width: $width-mobile) {
+            @include font-size(5);
+            @include line-height(5);
+
+            letter-spacing: -3px;
+        }
+    }
+
     &__content {
         opacity: 1;
         transition-duration: $duration-base * 2.2;
@@ -76,36 +102,6 @@ $exponential-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
 
         @media screen and (max-width: $width-mobile) {
             bottom: (1 / 4) * 100%;
-        }
-    }
-
-    h1 {
-        @include font-size(8);
-        @include line-height(8);
-
-        color: $color-primary;
-        font-weight: bold;
-        left: -3px;
-        letter-spacing: -5px;
-        margin: 0;
-        position: relative;
-        text-transform: lowercase;
-
-        .#{$class-app-ready} & {
-            @extend .animated;
-            @extend .fadeOut;
-        }
-
-        span {
-            color: $color-secondary;
-            font-weight: normal;
-        }
-
-        @media screen and (max-width: $width-mobile) {
-            @include font-size(5);
-            @include line-height(5);
-
-            letter-spacing: -3px;
         }
     }
 }

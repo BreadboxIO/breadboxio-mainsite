@@ -7,10 +7,7 @@ import PropTypes from 'prop-types';
 
 export class App extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { navigationActive: false };
-    }
+    state = { navigationActive: false };
 
     componentDidMount() {
         // When the app.js component mounts it fires an event called 'appReady'
@@ -27,7 +24,7 @@ export class App extends Component {
         this.setState({ navigationActive: !this.state.navigationActive });
     }
 
-    render() {
+    render = () => {
         const { children } = this.props;
         const { navigationActive } = this.state;
         

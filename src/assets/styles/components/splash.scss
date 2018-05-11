@@ -18,21 +18,32 @@ $component-selector: splash;
         text-align: center;
     }
 
-    h1 {
+    .brand-logo {
+        height: $spacer * 13;
+
+        .#{$class-app-ready} & {
+            @extend .animated;
+            @extend .bounceIn;
+
+            animation-duration: $duration-base * 2;
+            animation-delay: $duration-base * 2;
+        }
+
+        @media screen and (max-width: $width-mobile) {
+            height: $spacer * 7;
+        }
+    }
+
+    .brand-title {
         @include font-size(8);
         @include line-height(8);
 
         left: -3px;
         color: $color-white;
-        letter-spacing: -5px;
-        margin: 0;
         position: relative;
-        text-transform: lowercase;
-        font-weight: bold;
 
         span {
             color: $color-secondary;
-            font-weight: normal;
         }
 
         @media screen and (max-width: $width-mobile) {
@@ -43,14 +54,11 @@ $component-selector: splash;
         }
     }
 
-    h2 {
+    .brand-tagline {
         @include font-size(1.3);
         @include line-height(1.1);
 
-        font-family: $font-secondary;
-        letter-spacing: 4.7px;
         margin-bottom: $spacer * 2;
-        text-transform: uppercase;
 
         .#{$class-app-ready} & {
             @extend .animated;
@@ -70,30 +78,6 @@ $component-selector: splash;
             @include line-height(1.3);
 
             margin-bottom: $spacer;
-        }
-    }
-
-    &__logo {
-        height: $spacer * 13;
-
-        .#{$class-app-ready} & {
-            @extend .animated;
-            @extend .bounceIn;
-
-            animation-duration: $duration-base * 2;
-            animation-delay: $duration-base * 2;
-        }
-
-        &__background {
-            fill: $color-secondary;
-        }
-
-        &__foreground {
-            fill: $color-white;
-        }
-
-        @media screen and (max-width: $width-mobile) {
-            height: $spacer * 7;
         }
     }
 }

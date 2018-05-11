@@ -1,0 +1,15 @@
+@import '../config/variables';
+
+$component-selector: brand-tagline;
+
+.#{$component-selector} {
+    font-family: $font-secondary;
+    letter-spacing: 4.7px;
+    text-transform: uppercase;
+    margin: 0;
+
+    span {
+        font-size: 70%;
+        font-weight: bold;
+    }
+}

@@ -1,23 +1,19 @@
-import React, { Component } from 'react';
-
 import { AppIcon } from './app-icon';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-export class AppTitle extends Component {
+export const AppTitle = props => {
+    const { name, appIconSrc } = props;
 
-    render() {
-        const { name, appIconSrc } = this.props;
+    if (!name) return null;
 
-        if (!name) return null;
-
-        return (
-            <div className='app-title'>
-                <AppIcon imageSrc={appIconSrc} />
-                <h1>{name}<sup>®</sup></h1>
-            </div>
-        );
-    }
-}
+    return (
+        <div className='app-title'>
+            <AppIcon imageSrc={appIconSrc} />
+            <h1>{name}<sup>®</sup></h1>
+        </div>
+    );
+};
 
 AppTitle.defaultProps = {
     appIconSrc: '',

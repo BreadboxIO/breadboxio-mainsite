@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
+import React from 'react';
 
-export class AppIcon extends Component {
+export const AppIcon = props => {
+    const { imageSrc } = props;
 
-    render() {
-        const { imageSrc } = this.props;
+    if (!imageSrc) return null;
 
-        if (!imageSrc) return null;
-
-        return (
-            <div className='app-icon' style={{ backgroundImage: `url(${imageSrc})` }} />
-        );
-    }
-}
+    return (
+        <div className='app-icon' style={{ backgroundImage: `url(${imageSrc})` }} />
+    );
+};
 
 AppIcon.defaultProps = {
     imageSrc: ''
