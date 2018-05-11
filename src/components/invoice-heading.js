@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { getClientNumber } from '../util/get-client-number';
 import moment from 'moment';
 
-const DATE_FORMAT = 'MMM D YYYY';
+const DATE_FORMAT = 'MMMM D, YYYY';
 
 export class InvoiceHeading extends Component {
 
@@ -25,7 +25,7 @@ export class InvoiceHeading extends Component {
 
     render = () => {
         const today = this.getTodaysDate();
-        const dueDate = today.add(1, 'month');
+        const dueDate = moment(today).add(1, 'month');
 
         return (
             <div className='invoice-heading'>

@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
 
+import { InvoiceClient } from '../components/invoice-client';
 import { InvoiceHeading } from '../components/invoice-heading';
 
 export class InvoiceGeneratorScreen extends Component {
 
     render = () => {
         const clientName = 'The H2 Group';
+        const clientStreetAddress = '5947 Compton Street';
+        const clientZipCode = '46220';
+        const clientState = 'IN';
+        const clientCity = 'Indianapolis';
 
         return (
             <div className='invoice'>
                 <InvoiceHeading clientName={clientName} />
-                <div className='invoice__client'>
-                    <div className='invoice__client__client-detail'>
-                        <h1>The H2 Group (HG1)</h1>
-                        <h2>5947 Compton Street</h2>
-                        <h2>Indianapolis, IN 46220</h2>
-                    </div>
-                    <div className='invoice__client__icon' />
-                    <div className='invoice__client__retailer-detail'>
-                        <h1>Breadbox LLC</h1>
-                        <h2>1219 62nd Street #204</h2>
-                        <h2>Wauwatosa, WI 53213</h2>
-                    </div>
-                </div>
+                <InvoiceClient
+                    city={clientCity}
+                    name={clientName}
+                    state={clientState}
+                    streetAddress={clientStreetAddress}
+                    zipCode={clientZipCode}
+                />
                 <div className='invoice__table'>
                     <div className='invoice__table__heading'>
                         <div className='invoice__table__heading__cell'>Hours</div>

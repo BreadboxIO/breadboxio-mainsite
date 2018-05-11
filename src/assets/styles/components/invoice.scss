@@ -14,7 +14,7 @@ $component-selector: invoice;
         @include line-height(1.6);
 
         letter-spacing: -1px;
-        margin-bottom: $spacer / 2;
+        margin-bottom: $spacer;
     }
 
     h2 {
