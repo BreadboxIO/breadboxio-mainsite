@@ -60,4 +60,8 @@ $component-selector: navigation-toggle;
             }
         }
     }
+
+    @media print {
+        display: none;
+    }
 }

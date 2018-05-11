@@ -10,17 +10,17 @@ $component-selector: invoice;
     margin: 0 auto;
 
     h1 {
-        @include font-size(1.6);
-        @include line-height(1.6);
-
-        letter-spacing: -1px;
-        margin-bottom: $spacer;
-    }
-
-    h2 {
         @include font-size(1.4);
         @include line-height(1.4);
 
+        letter-spacing: -1px;
         margin-bottom: $spacer / 2;
+    }
+
+    h2 {
+        @include font-size(1.2);
+        @include line-height(1.2);
+
+        margin-bottom: $spacer / 4;
     }
 }

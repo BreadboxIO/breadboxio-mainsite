@@ -20,10 +20,10 @@ $component-selector: invoice-heading;
         }
 
         .brand-tagline {
-            @include font-size(0.6);
-            @include line-height(0.6);
+            @include font-size(0.3);
+            @include line-height(0.3);
 
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
 
         .brand-title {

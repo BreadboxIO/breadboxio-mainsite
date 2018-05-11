@@ -36,4 +36,9 @@ $component-selector: app;
             transform: translateX(-40%) rotateY(45deg) translateZ(-50px);
         }
     }
+
+    @media print {
+        background-color: $color-white;
+        background-image: none;
+    }
 }

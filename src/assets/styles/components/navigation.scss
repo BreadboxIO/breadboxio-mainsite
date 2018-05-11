@@ -78,6 +78,10 @@ $component-selector: navigation;
         }
     }
 
+    @media print {
+        display: none;
+    }
+
     @media screen and (max-width: $width-mobile) {
         letter-spacing: 2px;
     }

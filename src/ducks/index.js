@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
+import invoiceItemsDuck from './invoice-items';
 import { routerReducer } from 'react-router-redux';
-import testDuck from './test';
 
 const Reducers = combineReducers({
     router: routerReducer,
-    testState: testDuck
+    invoiceItemsState: invoiceItemsDuck
 });
 
 export default Reducers;

@@ -6,7 +6,7 @@ $component-selector: invoice-client;
 
 .#{$component-selector} {
     align-items: center;
-    background: lighten($color-secondary, 55%);
+    background: lighten($color-secondary, 58%);
     display: flex;
     flex-direction: row;
     padding: $spacer * 4 $spacer * 6;

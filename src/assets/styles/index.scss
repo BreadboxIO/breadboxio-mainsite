@@ -8,6 +8,9 @@
 @import 'config/reset';
 @import 'config/variables';
 
+//util
+@import 'util/text-transform';
+
 // elements
 @import 'elements/anchor';
 @import 'elements/body';
@@ -35,6 +38,7 @@
 @import 'components/invoice';
 @import 'components/invoice-client';
 @import 'components/invoice-heading';
+@import 'components/invoice-table';
 @import 'components/navigation';
 @import 'components/navigation-toggle';
 @import 'components/overlay';
