@@ -1,14 +1,12 @@
-import InvoiceClient from '../components/invoice-client';
-import InvoiceHeading from '../components/invoice-heading';
-import InvoiceTable from '../components/invoice-table';
+import { Invoice } from '../components/invoice';
+import InvoiceForm from '../components/invoice-form';
 import React from 'react';
 
 export const InvoiceGeneratorScreen = () => {
     return (
-        <div className='invoice'>
-            <InvoiceHeading />
-            <InvoiceClient />
-            <InvoiceTable />
+        <div style={{ minHeight: '100%', display: 'flex' }}>
+            <InvoiceForm />
+            <Invoice />
         </div>
     );
 };

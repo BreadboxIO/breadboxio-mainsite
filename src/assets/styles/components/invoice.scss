@@ -6,8 +6,10 @@ $component-selector: invoice;
 
 .#{$component-selector} {
     background: $color-white;
-    max-width: 850px;
+    display: none;
     margin: 0 auto;
+    max-width: 850px;
+    width: 100%;
 
     h1 {
         @include font-size(1.4);
@@ -33,6 +35,7 @@ $component-selector: invoice;
     }
 
     @media print {
+        display: block;
         max-width: 100%;
     }
 }
