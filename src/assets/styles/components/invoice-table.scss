@@ -57,6 +57,7 @@ $border: $border-width * 2 solid $border-color;
     }
 
     &__table-cell {
+        box-sizing: border-box;
         border-bottom: $border;
         padding: $spacer * 2;
         flex: 1;
@@ -67,29 +68,6 @@ $border: $border-width * 2 solid $border-color;
 
         &:last-child {
             padding-right: $spacer * 6;
-        }
-
-        &:nth-child(1) {
-            text-align: right;
-        }
-
-        &:nth-child(2) {
-            flex: 5;
-        }
-
-        &:nth-child(3) {
-            flex: 2;
-            text-align: right;
-        }
-
-        &:nth-child(4) {
-            flex: 2;
-            text-align: right;
-        }
-
-        &:nth-child(5) {
-            flex: none;
-            text-align: right;
         }
     }
 

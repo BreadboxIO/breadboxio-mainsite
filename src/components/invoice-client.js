@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { selectClientCity, selectClientName, selectClientState, selectClientStreetAddress } from '../ducks/client';
 
 import { Icon } from './icon';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getClientNumber } from '../util/get-client-number';
 
 export class InvoiceClient extends Component {
@@ -30,17 +32,29 @@ export class InvoiceClient extends Component {
 }
 
 InvoiceClient.defaultProps = {
+    city: '',
     name: '',
-    streetAddress: '',
     state: '',
-    zipCode: '',
-    city: ''
+    streetAddress: '',
+    zipCode: ''
 };
 
 InvoiceClient.propTypes = {
+    city: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    streetAddress: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
-    zipCode: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired
+    streetAddress: PropTypes.string.isRequired,
+    zipCode: PropTypes.string.isRequired
 };
+
+const mapStateToProps = state => {
+    return {
+        city: selectClientCity(state),
+        name: selectClientName(state),
+        state: selectClientState(state),
+        streetAddress: selectClientStreetAddress(state),
+        zipCode: selectClientState(state)
+    };
+};
+
+export default connect(mapStateToProps, {})(InvoiceClient);

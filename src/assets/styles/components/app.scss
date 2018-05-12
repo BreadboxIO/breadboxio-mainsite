@@ -32,7 +32,7 @@ $component-selector: app;
 
         .#{$component-selector}--navigation-active & {
             border-radius: $border-radius * 3;
-            overflow: hidden;
+            overflow: hidden !important; // this important is necessary because postCSS is adding previous browser versions that override it, as browsers update their CSS support this should be able to be removed.
             transform: translateX(-40%) rotateY(45deg) translateZ(-50px);
         }
     }

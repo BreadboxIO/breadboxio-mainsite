@@ -1,3 +1,4 @@
+import { InvoiceTableCell } from './invoice-table-cell';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -7,11 +8,11 @@ export const InvoiceTableDataRow = props => {
 
     return (
         <div className='invoice-table__data-row invoice-table__table-row'>
-            <div className='invoice-table__row__cell invoice-table__table-cell'>{hours.toFixed(2)}</div>
-            <div className='invoice-table__row__cell invoice-table__table-cell'>{description}</div>
-            <div className='invoice-table__row__cell invoice-table__table-cell'>${rate.toFixed(2)}</div>
-            <div className='invoice-table__row__cell invoice-table__table-cell'>${total.toFixed(2)}</div>
-            <div className='invoice-table__row__cell invoice-table__table-cell'>+</div>
+            <InvoiceTableCell>{hours.toFixed(2)}</InvoiceTableCell>
+            <InvoiceTableCell flex={5}>{description}</InvoiceTableCell>
+            <InvoiceTableCell flex={2} className='text-align--right'>${rate.toFixed(2)}</InvoiceTableCell>
+            <InvoiceTableCell flex={2} className='text-align--right'>${total.toFixed(2)}</InvoiceTableCell>
+            <InvoiceTableCell flex='none'>+</InvoiceTableCell>
         </div>
     );
 };

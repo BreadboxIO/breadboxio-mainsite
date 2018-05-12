@@ -38,7 +38,7 @@ export default paths => {
                     // without too, but this is the preferred way.
                     postcss: function() {
                         return [
-                            autoprefixer({ browsers: [ 'last 3 versions'] }),
+                            autoprefixer({ browsers: [ 'last 2 versions'] }),
                             precss
                         ];
                     }

@@ -6,7 +6,7 @@ $component-selector: invoice;
 
 .#{$component-selector} {
     background: $color-white;
-    max-width: $width-max;
+    max-width: 850px;
     margin: 0 auto;
 
     h1 {
@@ -22,5 +22,17 @@ $component-selector: invoice;
         @include line-height(1.2);
 
         margin-bottom: $spacer / 4;
+    }
+
+    p {
+        @include font-size(1);
+        @include line-height(1.4);
+
+        margin-bottom: $spacer / 8;
+        letter-spacing: -1px;
+    }
+
+    @media print {
+        max-width: 100%;
     }
 }

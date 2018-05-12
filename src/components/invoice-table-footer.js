@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { InvoiceTableCell } from './invoice-table-cell';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
@@ -41,31 +42,28 @@ export class InvoiceTableFooter extends Component {
         return (
             <div className='invoice-table__footer'>
                 <div className='invoice-table__data-row invoice-table__table-row'>
-                    <div className='invoice-table__table-cell'>{this.getTotalHours().toFixed(2)}</div>
-                    <div className='invoice-table__table-cell invoice-table__spacer' />
-                    <div className='invoice-table__table-cell text-transform--uppercase'>Subtotal:</div>
-                    <div className='invoice-table__table-cell'>${this.getSubTotal().toFixed(2)}</div>
-                    <div className='invoice-table__table-cell'>+</div>
+                    <InvoiceTableCell>{this.getTotalHours().toFixed(2)}</InvoiceTableCell>
+                    <InvoiceTableCell spacer flex={5} />
+                    <InvoiceTableCell flex={2} className='text-align--right text-transform--uppercase'>Subtotal:</InvoiceTableCell>
+                    <InvoiceTableCell flex={2} className='text-align--right'>${this.getSubTotal().toFixed(2)}</InvoiceTableCell>
+                    <InvoiceTableCell flex='none'>+</InvoiceTableCell>
                 </div>
                 <div className='invoice-table__data-row invoice-table__table-row'>
-                    <div className='invoice-table__table-cell invoice-table__spacer' />
-                    <div className='invoice-table__table-cell invoice-table__spacer' />
-                    <div className='invoice-table__table-cell text-transform--uppercase'>Taxes/Fees ({feePercent}%):</div>
-                    <div className='invoice-table__table-cell'>${this.getFeeTotal().toFixed(2)}</div>
-                    <div className='invoice-table__table-cell'>+</div>
+                    <InvoiceTableCell spacer flex={5} style={{ marginBottom: '-100px' }}>
+                        <p>Please make checks payable to <strong>Breadbox LLC</strong>.<br />Deliver check to sales rep or mail to:</p>
+                        <p><strong>Breadbox LLC</strong> · 1219 62nd St #204, Wauwatosa, WI 53213<br />(414) 614-0628 · <a href='mailto:contact@breadbox.io'>contact@breadbox.io</a></p>
+                    </InvoiceTableCell>
+                    <InvoiceTableCell spacer />
+                    <InvoiceTableCell flex={2} className='text-align--right text-transform--uppercase'>Taxes/Fees ({feePercent}%):</InvoiceTableCell>
+                    <InvoiceTableCell flex={2} className='text-align--right'>${this.getFeeTotal().toFixed(2)}</InvoiceTableCell>
+                    <InvoiceTableCell flex='none'>+</InvoiceTableCell>
                 </div>
                 <div className='invoice-table__data-row invoice-table__table-row'>
-                    <div className='invoice-table__table-cell invoice-table__spacer' />
-                    <div className='invoice-table__table-cell invoice-table__spacer' />
-                    <div className='invoice-table__table-cell text-transform--uppercase invoice-table__footer__total-label'>
-                        <strong>Total To Pay:</strong>
-                    </div>
-                    <div className='invoice-table__table-cell invoice-table__footer__total-value'>
-                        <strong>${this.getNetTotal().toFixed(2)}</strong>
-                    </div>
-                    <div className='invoice-table__table-cell invoice-table__footer__total-value'>
-                        <strong>=</strong>
-                    </div>
+                    <InvoiceTableCell spacer />
+                    <InvoiceTableCell spacer flex={5} />
+                    <InvoiceTableCell flex={2} className='invoice-table__footer__total-label text-align--right text-transform--uppercase'><strong>Total To Pay:</strong></InvoiceTableCell>
+                    <InvoiceTableCell flex={2} className='invoice-table__footer__total-value text-align--right'><strong>${this.getNetTotal().toFixed(2)}</strong></InvoiceTableCell>
+                    <InvoiceTableCell flex='none' className='invoice-table__footer__total-value'><strong>=</strong></InvoiceTableCell>
                 </div>
             </div>
         );
