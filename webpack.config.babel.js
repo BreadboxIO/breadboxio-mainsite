@@ -11,7 +11,7 @@ import loadFonts from './webpack/load-fonts';
 import loadImages from './webpack/load-images';
 import loadJavascript from './webpack/load-javascript';
 import minifyJavascript from './webpack/minify-javascript';
-import purifyCSS from './webpack/purify-css';
+// import purifyCSS from './webpack/purify-css';
 import setFreeVariable from './webpack/set-free-variable';
 import setupSCSS from './webpack/setup-scss';
 
@@ -63,7 +63,7 @@ const common = merge([
     })
 ]);
 
-export default function(env) {
+export default env => {
     if (env === 'production') {
 
         return merge([
@@ -90,7 +90,7 @@ export default function(env) {
             copyFile({ sourcePath: path.join(__dirname, '404.html'), destPath: ROOT_PATHS.public }),
             minifyJavascript({ useSourceMap: false }),
             extractSCSS(PATHS.style)
-            // purifyCSS([ROOT_PATHS.src]),
+            // purifyCSS([ROOT_PATHS.src])
         ]);
     }
 
@@ -119,4 +119,4 @@ export default function(env) {
             }
         })
     ]);
-}
+};

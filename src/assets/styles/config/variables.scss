@@ -21,6 +21,21 @@ $color-primary: #fdb634;
 $color-secondary: #6a6058;
 $color-tertiary: #009ce4;
 
+$colors: (
+    black: $color-black,
+    danger: $color-danger,
+    facebook: $color-facebook,
+    google-plus: $color-google-plus,
+    grey: $color-grey,
+    pinterest: $color-pinterest,
+    primary: $color-primary,
+    secondary: $color-secondary,
+    success: $color-success,
+    twitter: $color-twitter,
+    warning: $color-warning,
+    white: $color-white
+);
+
 /* typography
 **********************************************************/
 // font families
@@ -49,6 +64,17 @@ $width-max: 1200px;
 $spacer: 1rem;
 $border-width: 1px;
 $border-radius: $spacer * 0.3;
+
+// grid
+$grid-gutter: $spacer;
+$grid-columns: 12;
+$grid-breakpoints: (
+    xs: $width-mobile-small,
+    sm: $width-mobile,
+    md: $width-tablet,
+    lg: $width-desktop,
+    xl: $width-max
+);
 
 /* active classes
 **********************************************************/
