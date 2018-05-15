@@ -10,6 +10,13 @@ import { Row } from './row';
 
 export class InvoiceFormInvoiceItem extends Component {
 
+    handleOnUpdate = (key, value) => {
+        const { onUpdate, description, hours, rate } = this.props;
+        const updatedItem = Object.assign({}, { hours, rate, description, [key]: value });
+
+        onUpdate(updatedItem);
+    }
+
     render = () => {
         const { hours, description, rate, onRemoveClick } = this.props;
 
@@ -18,17 +25,31 @@ export class InvoiceFormInvoiceItem extends Component {
                 <Grid>
                     <Row>
                         <Column width={12}>
-                            <InvoiceFormTextInput label='Hours' value={hours} type='number' />
+                            <InvoiceFormTextInput
+                                label='Hours'
+                                onChange={value => this.handleOnUpdate('hours', value)}
+                                type='number'
+                                value={hours}
+                            />
                         </Column>
                     </Row>
                     <Row>
                         <Column width={12}>
-                            <InvoiceFormTextInput label='Rate ($/hour)' value={rate} type='number' />
+                            <InvoiceFormTextInput
+                                label='Rate ($/hour)'
+                                onChange={value => this.handleOnUpdate('rate', value)}
+                                type='number'
+                                value={rate}
+                            />
                         </Column>
                     </Row>
                     <Row>
                         <Column width={12}>
-                            <InvoiceFormTextInput label='Task' value={description} />
+                            <InvoiceFormTextInput
+                                label='Task'
+                                onChange={value => this.handleOnUpdate('description', value)}
+                                value={description}
+                            />
                         </Column>
                     </Row>
                     <Row>
@@ -48,6 +69,7 @@ InvoiceFormInvoiceItem.defaultProps = {
     description: '',
     hours: 0,
     onRemoveClick: () => {},
+    onUpdate: () => {},
     rate: 0
 };
 
@@ -55,5 +77,6 @@ InvoiceFormInvoiceItem.propTypes = {
     description: PropTypes.string,
     hours: PropTypes.number,
     onRemoveClick: PropTypes.func,
+    onUpdate: PropTypes.func,
     rate: PropTypes.number
 };

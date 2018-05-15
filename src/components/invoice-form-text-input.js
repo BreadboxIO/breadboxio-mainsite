@@ -10,8 +10,10 @@ export class InvoiceFormTextInput extends Component {
     handleOnChange = event => {
         if (!event) return;
 
-        const { onChange } = this.props;
-        onChange(event.target.value);
+        const { onChange, type } = this.props;
+        const value = type === 'number' ? parseFloat(event.target.value) : event.target.value;
+
+        onChange(value);
     }
 
     render() {
@@ -50,5 +52,5 @@ InvoiceFormTextInput.propTypes = {
     onChange: PropTypes.func,
     placeholder: PropTypes.string,
     type: PropTypes.string,
-    value: PropTypes.string
+    value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
 };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addInvoiceItem, removeInvoiceItem, selectInvoiceItems } from '../ducks/invoice-items';
+import { addInvoiceItem, removeInvoiceItem, selectInvoiceItems, updateInvoiceItem } from '../ducks/invoice-items';
 
 import { BlockButton } from './block-button';
 import { Column } from './column';
@@ -13,12 +13,17 @@ import { connect } from 'react-redux';
 export class InvoiceFormInvoiceItems extends Component {
 
     renderInvoiceItems = () => {
-        const { items, removeInvoiceItem } = this.props;
+        const { items, removeInvoiceItem, updateInvoiceItem } = this.props;
         const result = [];
 
         items.forEach((item, index) => {
             result.push(
-                <InvoiceFormInvoiceItem {...item} onRemoveClick={() => removeInvoiceItem(index)} />
+                <InvoiceFormInvoiceItem
+                    {...item}
+                    key={index}
+                    onRemoveClick={() => removeInvoiceItem(index)}
+                    onUpdate={item => updateInvoiceItem({ index, item })}
+                />
             );
         });
 
@@ -47,15 +52,17 @@ export class InvoiceFormInvoiceItems extends Component {
 }
 
 InvoiceFormInvoiceItems.defaultProps = {
+    addInvoiceItem: () => {},
     items: [],
     removeInvoiceItem: () => {},
-    addInvoiceItem: () => {}
+    updateInvoiceItem: () => {}
 };
 
 InvoiceFormInvoiceItems.propTypes = {
+    addInvoiceItem: PropTypes.func,
     items: PropTypes.array,
     removeInvoiceItem: PropTypes.func,
-    addInvoiceItem: PropTypes.func
+    updateInvoiceItem: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -64,4 +71,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps, { addInvoiceItem, removeInvoiceItem })(InvoiceFormInvoiceItems);
+export default connect(mapStateToProps, { addInvoiceItem, removeInvoiceItem, updateInvoiceItem })(InvoiceFormInvoiceItems);

@@ -8,9 +8,10 @@ const DEFAULT_STATE = {
     data: [ new InvoiceItem() ]
 };
 
-const RESET = 'invoice-items/RESET';
 const ADD = 'invoice-items/ADD';
 const REMOVE = 'invoice-items/REMOVE';
+const RESET = 'invoice-items/RESET';
+const UPDATE = 'invoice-items/UPDATE';
 
 export default handleActions(
     {
@@ -23,16 +24,28 @@ export default handleActions(
         [REMOVE]: (state, action) => {
             const index = action.payload;
             const { data } = state;
+            console.log('index: ', index);
 
-            const updatedData = data.splice(index, 1);
+            const updatedData = [].concat(data);
+            updatedData.splice(index, 1);
 
             return Object.assign({}, state, { data: updatedData });
         },
         [RESET]: state => Object.assign({}, state, DEFAULT_STATE),
+        [UPDATE]: (state, action) => {
+            const { data } = state;
+            const { index, item } = action.payload;
+
+            const updatedData = [].concat(data);
+            updatedData[index] = new InvoiceItem(item);
+
+            return Object.assign({}, state, { data: updatedData });
+        }
     },
     DEFAULT_STATE
 );
 
-export const resetInvoiceItems = createAction(RESET);
 export const addInvoiceItem = createAction(ADD);
 export const removeInvoiceItem = createAction(REMOVE);
+export const resetInvoiceItems = createAction(RESET);
+export const updateInvoiceItem = createAction(UPDATE);

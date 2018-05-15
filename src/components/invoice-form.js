@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { BlockButton } from './block-button';
+import { Icon } from './icon';
 import InvoiceFormClientDetails from './invoice-form-client-details';
 import InvoiceFormInvoiceItems from './invoice-form-invoice-items';
 
@@ -21,6 +23,9 @@ export class InvoiceForm extends Component {
                     </div>
                     <InvoiceFormClientDetails />
                     <InvoiceFormInvoiceItems />
+                    <BlockButton color='success' onClick={window.print}>
+                        <Icon name='print' /> Print
+                    </BlockButton>
                 </div>
             </div>
         );
