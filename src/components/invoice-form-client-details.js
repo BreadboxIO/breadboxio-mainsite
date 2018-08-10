@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { selectClientCity, selectClientName, selectClientState, selectClientStreetAddress, updateClient } from '../ducks/client';
+import { selectClientCity, selectClientName, selectClientState, selectClientStreetAddress, updateClient, selectClientZipCode } from '../ducks/client';
 
 import { InvoiceFormTextInput } from './invoice-form-text-input';
 import PropTypes from 'prop-types';
@@ -71,7 +71,7 @@ const mapStateToProps = state => {
         name: selectClientName(state),
         state: selectClientState(state),
         streetAddress: selectClientStreetAddress(state),
-        zipCode: selectClientState(state)
+        zipCode: selectClientZipCode(state)
     };
 };
 

@@ -2,7 +2,7 @@ import { createAction, handleActions } from 'redux-actions';
 
 export const selectClientCity = state => state.clientState.city;
 export const selectClientName = state => state.clientState.name;
-export const selectClientState = state => state.clientState.State;
+export const selectClientState = state => state.clientState.state;
 export const selectClientStreetAddress = state => state.clientState.streetAddress;
 export const selectClientZipCode = state => state.clientState.zipCode;
 
