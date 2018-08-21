@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { selectClientCity, selectClientName, selectClientState, selectClientStreetAddress } from '../ducks/client';
+import { selectClientCity, selectClientName, selectClientState, selectClientStreetAddress, selectClientZipCode } from '../ducks/client';
 
 import { Icon } from './icon';
 import PropTypes from 'prop-types';
@@ -53,7 +53,7 @@ const mapStateToProps = state => {
         name: selectClientName(state),
         state: selectClientState(state),
         streetAddress: selectClientStreetAddress(state),
-        zipCode: selectClientState(state)
+        zipCode: selectClientZipCode(state)
     };
 };
 
