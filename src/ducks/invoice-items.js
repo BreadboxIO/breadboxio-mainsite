@@ -24,7 +24,6 @@ export default handleActions(
         [REMOVE]: (state, action) => {
             const index = action.payload;
             const { data } = state;
-            console.log('index: ', index);
 
             const updatedData = [].concat(data);
             updatedData.splice(index, 1);
