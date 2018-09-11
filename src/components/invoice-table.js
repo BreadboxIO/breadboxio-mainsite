@@ -8,15 +8,22 @@ import { connect } from 'react-redux';
 import { selectInvoiceItems } from '../ducks/invoice-items';
 
 export class InvoiceTable extends Component {
+    static propTypes = {
+        invoiceItems: PropTypes.arrayOf(PropTypes.object)
+    };
 
-    renderDataRows = () => {
+    static defaultProps = {
+        invoiceItems: []
+    };
+
+    renderDataRows() {
         const { invoiceItems } = this.props;
         const result = invoiceItems.map((item, index) => <InvoiceTableDataRow {...item} key={index} />);
 
         return result;
     }
 
-    render = () => {
+    render() {
         const { invoiceItems } = this.props;
         const dataRows = this.renderDataRows();
 
@@ -29,14 +36,6 @@ export class InvoiceTable extends Component {
         );
     }
 }
-
-InvoiceTable.defaultProps = {
-    invoiceItems: []
-};
-
-InvoiceTable.propTypes = {
-    invoiceItems: PropTypes.arrayOf(PropTypes.object)
-};
 
 const mapStateToProps = state => {
     return {

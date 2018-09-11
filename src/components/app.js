@@ -6,8 +6,21 @@ import { Overlay } from './overlay';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
+    static propTypes = {
+        children: PropTypes.oneOfType([ PropTypes.array, PropTypes.element ])
+    };
 
-    state = { navigationActive: false };
+    static defaultProps = {
+        children: null
+    }
+
+    constructor(props) {
+        super(props);
+        this.state = { navigationActive: false };
+
+        this.toggleNavigation = this.toggleNavigation.bind(this);
+        this.closeNavigation = this.closeNavigation.bind(this);
+    }
 
     componentDidMount() {
         // When the app.js component mounts it fires an event called 'appReady'
@@ -16,15 +29,15 @@ export class App extends Component {
         document.dispatchEvent(event);
     }
 
-    closeNavigation = () => {
+    closeNavigation() {
         this.setState({ navigationActive: false });
     }
 
-    toggleNavigation = () => {
+    toggleNavigation() {
         this.setState({ navigationActive: !this.state.navigationActive });
     }
 
-    render = () => {
+    render() {
         const { children } = this.props;
         const { navigationActive } = this.state;
         
@@ -40,7 +53,3 @@ export class App extends Component {
         );
     }
 }
-
-App.propTypes = {
-    children: PropTypes.oneOfType([ PropTypes.array, PropTypes.element ])
-};

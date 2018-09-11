@@ -12,8 +12,15 @@ import { selectClientName } from '../ducks/client';
 const DATE_FORMAT = 'MMMM D, YYYY';
 
 export class InvoiceHeading extends Component {
+    static propTypes = {
+        clientName: PropTypes.string.isRequired
+    };
 
-    getInvoiceNumber = () => {
+    static defaultProps = {
+        clientName: ''
+    };
+
+    getInvoiceNumber() {
         const { clientName } = this.props;
         const today = this.getTodaysDate();
         const clientNumber = getClientNumber(clientName);
@@ -21,13 +28,16 @@ export class InvoiceHeading extends Component {
         return `${today.format('YYYYMMDD')}${clientNumber}`;
     }
 
-    getTodaysDate = () => {
+    getTodaysDate() {
         return moment();
     }
 
-    render = () => {
+    render() {
         const today = this.getTodaysDate();
         const dueDate = moment(today).add(1, 'month');
+        const invoiceNumber = this.getInvoiceNumber();
+        const invoiceDate = today.format(DATE_FORMAT);
+        const dueDateFormatted = dueDate.format(DATE_FORMAT);
 
         return (
             <div className='invoice-heading'>
@@ -41,22 +51,14 @@ export class InvoiceHeading extends Component {
                     </div>
                 </div>
                 <div className='invoice-heading__detail'>
-                    <h1>Invoice #{this.getInvoiceNumber()}</h1>
-                    <h2>Invoice Date: {today.format(DATE_FORMAT)}</h2>
-                    <h2>Due Date: {dueDate.format(DATE_FORMAT)}</h2>
+                    <h1>Invoice #{invoiceNumber}</h1>
+                    <h2>Invoice Date: {invoiceDate}</h2>
+                    <h2>Due Date: {dueDateFormatted}</h2>
                 </div>
             </div>
         );
     }
 }
-
-InvoiceHeading.defaultProps = {
-    clientName: ''
-};
-
-InvoiceHeading.propTypes = {
-    clientName: PropTypes.string.isRequired
-};
 
 const mapStateToProps = state => {
     return {

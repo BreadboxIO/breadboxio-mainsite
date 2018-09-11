@@ -6,8 +6,30 @@ import PropTypes from 'prop-types';
 import { Row } from './row';
 
 export class InvoiceFormTextInput extends Component {
+    static propTypes = {
+        label: PropTypes.string,
+        onChange: PropTypes.func,
+        placeholder: PropTypes.string,
+        textarea: PropTypes.bool,
+        type: PropTypes.string,
+        value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
+    };
 
-    handleOnChange = event => {
+    static defaultProps = {
+        label: 'Label',
+        onChange: () => {},
+        placeholder: 'Enter a value...',
+        textarea: false,
+        type: 'text',
+        value: ''
+    };
+
+    constructor(props) {
+        super(props);
+        this.handleOnChange = this.handleOnChange.bind(this);
+    }
+
+    handleOnChange(event) {
         if (!event) return;
 
         const { onChange, type } = this.props;
@@ -17,7 +39,8 @@ export class InvoiceFormTextInput extends Component {
     }
 
     render() {
-        const { value, label, placeholder, type } = this.props;
+        const { value, label, placeholder, type, textarea } = this.props;
+        const fieldProps = { onChange: this.handleOnChange, placeholder, type, value };
 
         return (
             <Grid className='invoice-form__input'>
@@ -26,31 +49,13 @@ export class InvoiceFormTextInput extends Component {
                         <label>{label}:</label>
                     </Column>
                     <Column widthMd={9} widthSm={8}>
-                        <input
-                            onChange={this.handleOnChange}
-                            placeholder={placeholder}
-                            type={type}
-                            value={value}
-                        />
+                        {textarea
+                            ? <textarea {...fieldProps} />
+                            : <input {...fieldProps} />
+                        }
                     </Column>
                 </Row>
             </Grid>
         );
     }
 }
-
-InvoiceFormTextInput.defaultProps = {
-    label: 'Label',
-    onChange: () => {},
-    placeholder: 'Enter a value...',
-    type: 'text',
-    value: ''
-};
-
-InvoiceFormTextInput.propTypes = {
-    label: PropTypes.string,
-    onChange: PropTypes.func,
-    placeholder: PropTypes.string,
-    type: PropTypes.string,
-    value: PropTypes.oneOfType([ PropTypes.string, PropTypes.number ])
-};

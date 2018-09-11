@@ -12,10 +12,14 @@ $component-selector: invoice-form;
     padding: $spacer * 8 $spacer * 4;
     width: 100%;
 
+    .block-button {
+        margin-bottom: $spacer;
+    }
+
     &__container {
         margin: 0 auto;
         min-height: 100%;
-        max-width: $width-mobile;
+        max-width: $width-tablet;
     }
 
     &__input {

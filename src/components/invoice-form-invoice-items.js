@@ -11,8 +11,21 @@ import { Row } from './row';
 import { connect } from 'react-redux';
 
 export class InvoiceFormInvoiceItems extends Component {
+    static propTypes = {
+        addInvoiceItem: PropTypes.func,
+        items: PropTypes.array,
+        removeInvoiceItem: PropTypes.func,
+        updateInvoiceItem: PropTypes.func
+    };
 
-    renderInvoiceItems = () => {
+    static defaultProps = {
+        addInvoiceItem: () => {},
+        items: [],
+        removeInvoiceItem: () => {},
+        updateInvoiceItem: () => {}
+    };
+
+    renderInvoiceItems() {
         const { items, removeInvoiceItem, updateInvoiceItem } = this.props;
         const result = [];
 
@@ -30,8 +43,9 @@ export class InvoiceFormInvoiceItems extends Component {
         return result;
     }
 
-    render = () => {
+    render() {
         const { addInvoiceItem } = this.props;
+        const invoiceItems = this.renderInvoiceItems();
 
         return (
             <div className='invoice-form__section'>
@@ -45,25 +59,11 @@ export class InvoiceFormInvoiceItems extends Component {
                         </Column>
                     </Row>
                 </Grid>
-                {this.renderInvoiceItems()}
+                {invoiceItems}
             </div>
         );
     }
 }
-
-InvoiceFormInvoiceItems.defaultProps = {
-    addInvoiceItem: () => {},
-    items: [],
-    removeInvoiceItem: () => {},
-    updateInvoiceItem: () => {}
-};
-
-InvoiceFormInvoiceItems.propTypes = {
-    addInvoiceItem: PropTypes.func,
-    items: PropTypes.array,
-    removeInvoiceItem: PropTypes.func,
-    updateInvoiceItem: PropTypes.func
-};
 
 const mapStateToProps = state => {
     return {

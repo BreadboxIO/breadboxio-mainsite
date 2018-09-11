@@ -5,8 +5,19 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 
 export class InvoiceTableFooter extends Component {
+    static propTypes = {
+        items: PropTypes.array.isRequired,
+        fees: PropTypes.number,
+        feePercent: PropTypes.number
+    };
 
-    getFeeTotal = () => {
+    static defaultProps = {
+        items: [],
+        fees: 0,
+        feePercent: 0
+    };
+
+    getFeeTotal() {
         const { fees, feePercent } = this.props;
 
         const subTotal = this.getSubTotal();
@@ -15,11 +26,11 @@ export class InvoiceTableFooter extends Component {
         return fees + (subTotal * multiplier);
     }
 
-    getNetTotal = () => {
+    getNetTotal() {
         return this.getSubTotal() + this.getFeeTotal();
     }
 
-    getSubTotal = () => {
+    getSubTotal() {
         const { items } = this.props;
         let result = 0;
 
@@ -31,21 +42,25 @@ export class InvoiceTableFooter extends Component {
         return result;
     }
 
-    getTotalHours = () => {
+    getTotalHours() {
         const { items } = this.props;
         return _.sumBy(items, 'hours');
     }
 
-    render = () => {
+    render() {
         const { feePercent } = this.props;
+        const totalHours = this.getTotalHours().toFixed(2);
+        const subTotal = this.getSubTotal().toFixed(2);
+        const feeTotal = this.getFeeTotal().toFixed(2);
+        const netTotal = this.getNetTotal().toFixed(2);
 
         return (
             <div className='invoice-table__footer'>
                 <div className='invoice-table__data-row invoice-table__table-row'>
-                    <InvoiceTableCell>{this.getTotalHours().toFixed(2)}</InvoiceTableCell>
+                    <InvoiceTableCell>{totalHours}</InvoiceTableCell>
                     <InvoiceTableCell spacer flex={5} />
                     <InvoiceTableCell flex={2} className='text-align--right text-transform--uppercase'>Subtotal:</InvoiceTableCell>
-                    <InvoiceTableCell flex={2} className='text-align--right'>${this.getSubTotal().toFixed(2)}</InvoiceTableCell>
+                    <InvoiceTableCell flex={2} className='text-align--right'>${subTotal}</InvoiceTableCell>
                     <InvoiceTableCell flex='none'>+</InvoiceTableCell>
                 </div>
                 <div className='invoice-table__data-row invoice-table__table-row'>
@@ -55,29 +70,17 @@ export class InvoiceTableFooter extends Component {
                     </InvoiceTableCell>
                     <InvoiceTableCell spacer />
                     <InvoiceTableCell flex={2} className='text-align--right text-transform--uppercase'>Taxes/Fees ({feePercent}%):</InvoiceTableCell>
-                    <InvoiceTableCell flex={2} className='text-align--right'>${this.getFeeTotal().toFixed(2)}</InvoiceTableCell>
+                    <InvoiceTableCell flex={2} className='text-align--right'>${feeTotal}</InvoiceTableCell>
                     <InvoiceTableCell flex='none'>+</InvoiceTableCell>
                 </div>
                 <div className='invoice-table__data-row invoice-table__table-row'>
                     <InvoiceTableCell spacer />
                     <InvoiceTableCell spacer flex={5} />
                     <InvoiceTableCell flex={2} className='invoice-table__footer__total-label text-align--right text-transform--uppercase'><strong>Total To Pay:</strong></InvoiceTableCell>
-                    <InvoiceTableCell flex={2} className='invoice-table__footer__total-value text-align--right'><strong>${this.getNetTotal().toFixed(2)}</strong></InvoiceTableCell>
+                    <InvoiceTableCell flex={2} className='invoice-table__footer__total-value text-align--right'><strong>${netTotal}</strong></InvoiceTableCell>
                     <InvoiceTableCell flex='none' className='invoice-table__footer__total-value'><strong>=</strong></InvoiceTableCell>
                 </div>
             </div>
         );
     }
 }
-
-InvoiceTableFooter.defaultProps = {
-    items: [],
-    fees: 0,
-    feePercent: 0
-};
-
-InvoiceTableFooter.propTypes = {
-    items: PropTypes.array.isRequired,
-    fees: PropTypes.number,
-    feePercent: PropTypes.number
-};

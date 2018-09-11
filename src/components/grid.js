@@ -4,8 +4,19 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export class Grid extends Component {
+    static propTypes = {
+        children: PropTypes.oneOfType([ PropTypes.arrayOf(PropTypes.node), PropTypes.node ]).isRequired,
+        className: PropTypes.string,
+        maxWidth: PropTypes.bool
+    };
 
-    renderClassNames = () => {
+    static defaultProps = {
+        maxWidth: false,
+        className: '',
+        children: null
+    };
+
+    renderClassNames() {
         const { maxWidth, className } = this.props;
 
         const result = classNames(
@@ -19,21 +30,10 @@ export class Grid extends Component {
 
     render() {
         const { children } = this.props;
+        const className = this.renderClassNames();
 
         return (
-            <div className={this.renderClassNames()}>{children}</div>
+            <div className={className}>{children}</div>
         );
     }
 }
-
-Grid.defaultProps = {
-    maxWidth: false,
-    className: '',
-    children: null
-};
-
-Grid.propTypes = {
-    children: PropTypes.oneOfType([ PropTypes.arrayOf(PropTypes.node), PropTypes.node ]).isRequired,
-    className: PropTypes.string,
-    maxWidth: PropTypes.bool
-};

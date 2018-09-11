@@ -3,8 +3,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export class AppScreenshot extends Component {
+    static propTypes = {
+        images: PropTypes.array.isRequired,
+    };
 
-    renderScreenshots = () => {
+    static defaultProps = {
+        images: []
+    };
+
+    renderScreenshots() {
         const { images } = this.props;
         const result = [];
 
@@ -20,10 +27,12 @@ export class AppScreenshot extends Component {
         return result;
     }
 
-    render = () => {
+    render() {
         const { images } = this.props;
 
         if (images.length < 1) return null;
+
+        const screenshots = this.renderScreenshots();
 
         return (
             <div className='app-screenshot'>
@@ -31,17 +40,9 @@ export class AppScreenshot extends Component {
                     <img src={require('../assets/images/apps/iphone.png')} />
                 </div>
                 <div className='app-screenshot__screenshots'>
-                    {this.renderScreenshots()}
+                    {screenshots}
                 </div>
             </div>
         );
     }
 }
-
-AppScreenshot.defaultProps = {
-    images: []
-};
-
-AppScreenshot.propTypes = {
-    images: PropTypes.array.isRequired,
-};
