@@ -5699,6 +5699,54 @@ html {
 html {
   font-size: 63.75%; }
 
+textarea {
+  transition-duration: 0.1s;
+  transition-property: color, border-color;
+  transition-timing-function: ease;
+  -webkit-appearance: none;
+  border-radius: 0.3rem;
+  border: 1px solid #f6f5f4;
+  box-sizing: border-box;
+  color: #6a6058;
+  padding: 0.5rem;
+  width: 100%;
+  max-width: 100%; }
+  textarea:focus {
+    outline: none;
+    border-color: #6a6058; }
+  textarea::placeholder {
+    color: #c1bab4; }
+
+/* colors
+**********************************************************/
+/* typography
+**********************************************************/
+/* device widths
+**********************************************************/
+/* spacing
+**********************************************************/
+/* active classes
+**********************************************************/
+/* animations
+**********************************************************/
+html {
+  font-size: 63.75%; }
+
+/* colors
+**********************************************************/
+/* typography
+**********************************************************/
+/* device widths
+**********************************************************/
+/* spacing
+**********************************************************/
+/* active classes
+**********************************************************/
+/* animations
+**********************************************************/
+html {
+  font-size: 63.75%; }
+
 .app {
   background-color: #6a6058;
   background-image: url(images/bg-forest.2b378a49d4fb1f68e7b0638518696942.jpg);
@@ -6336,6 +6384,7 @@ html {
   color: #fff;
   display: block;
   font-weight: bold;
+  height: 100%;
   letter-spacing: -1px;
   padding: 0.5rem 1rem;
   text-transform: uppercase;
@@ -6599,7 +6648,12 @@ html {
   margin-left: auto;
   margin-right: auto;
   width: 100%; }
-  .grid .column-xs-1, .grid .column-xs-2, .grid .column-xs-3, .grid .column-xs-4, .grid .column-xs-5, .grid .column-xs-6, .grid .column-xs-7, .grid .column-xs-8, .grid .column-xs-9, .grid .column-xs-10, .grid .column-xs-11, .grid .column-xs-12, .grid .column-xs, .grid .column-xs-auto, .grid .column-sm-1, .grid .column-sm-2, .grid .column-sm-3, .grid .column-sm-4, .grid .column-sm-5, .grid .column-sm-6, .grid .column-sm-7, .grid .column-sm-8, .grid .column-sm-9, .grid .column-sm-10, .grid .column-sm-11, .grid .column-sm-12, .grid .column-sm, .grid .column-sm-auto, .grid .column-md-1, .grid .column-md-2, .grid .column-md-3, .grid .column-md-4, .grid .column-md-5, .grid .column-md-6, .grid .column-md-7, .grid .column-md-8, .grid .column-md-9, .grid .column-md-10, .grid .column-md-11, .grid .column-md-12, .grid .column-md, .grid .column-md-auto, .grid .column-lg-1, .grid .column-lg-2, .grid .column-lg-3, .grid .column-lg-4, .grid .column-lg-5, .grid .column-lg-6, .grid .column-lg-7, .grid .column-lg-8, .grid .column-lg-9, .grid .column-lg-10, .grid .column-lg-11, .grid .column-lg-12, .grid .column-lg, .grid .column-lg-auto, .grid .column-xl-1, .grid .column-xl-2, .grid .column-xl-3, .grid .column-xl-4, .grid .column-xl-5, .grid .column-xl-6, .grid .column-xl-7, .grid .column-xl-8, .grid .column-xl-9, .grid .column-xl-10, .grid .column-xl-11, .grid .column-xl-12, .grid .column-xl, .grid .column-xl-auto {
+  .grid .column-xs-1, .grid .column-xs-2, .grid .column-xs-3, .grid .column-xs-4, .grid .column-xs-5, .grid .column-xs-6, .grid .column-xs-7, .grid .column-xs-8, .grid .column-xs-9, .grid .column-xs-10, .grid .column-xs-11, .grid .column-xs-12, .grid .column-xs,
+  .grid .column-xs-auto, .grid .column-sm-1, .grid .column-sm-2, .grid .column-sm-3, .grid .column-sm-4, .grid .column-sm-5, .grid .column-sm-6, .grid .column-sm-7, .grid .column-sm-8, .grid .column-sm-9, .grid .column-sm-10, .grid .column-sm-11, .grid .column-sm-12, .grid .column-sm,
+  .grid .column-sm-auto, .grid .column-md-1, .grid .column-md-2, .grid .column-md-3, .grid .column-md-4, .grid .column-md-5, .grid .column-md-6, .grid .column-md-7, .grid .column-md-8, .grid .column-md-9, .grid .column-md-10, .grid .column-md-11, .grid .column-md-12, .grid .column-md,
+  .grid .column-md-auto, .grid .column-lg-1, .grid .column-lg-2, .grid .column-lg-3, .grid .column-lg-4, .grid .column-lg-5, .grid .column-lg-6, .grid .column-lg-7, .grid .column-lg-8, .grid .column-lg-9, .grid .column-lg-10, .grid .column-lg-11, .grid .column-lg-12, .grid .column-lg,
+  .grid .column-lg-auto, .grid .column-xl-1, .grid .column-xl-2, .grid .column-xl-3, .grid .column-xl-4, .grid .column-xl-5, .grid .column-xl-6, .grid .column-xl-7, .grid .column-xl-8, .grid .column-xl-9, .grid .column-xl-10, .grid .column-xl-11, .grid .column-xl-12, .grid .column-xl,
+  .grid .column-xl-auto {
     min-height: 1px;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -7203,10 +7257,12 @@ html {
   background: #fff;
   padding: 8rem 4rem;
   width: 100%; }
+  .invoice-form .block-button {
+    margin-bottom: 1rem; }
   .invoice-form__container {
     margin: 0 auto;
     min-height: 100%;
-    max-width: 576px; }
+    max-width: 768px; }
   .invoice-form__input {
     margin-bottom: 1rem; }
   .invoice-form__invoice-item {
@@ -7314,11 +7370,14 @@ html {
     font-size: 1.2rem;
     line-height: 12px;
     line-height: 1.2rem; }
+    .invoice-table__data-row .invoice-table__table-cell {
+      padding: 1rem 2rem; }
   .invoice-table__footer {
     margin-top: 8rem; }
     .invoice-table__footer .invoice-table__table-cell {
       border-bottom: none;
-      border-top: 2px solid #f6f5f4; }
+      border-top: 2px solid #f6f5f4;
+      padding: 2rem; }
     .invoice-table__footer__total-label {
       border: none !important;
       background: #f6f5f4; }
