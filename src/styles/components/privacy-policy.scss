@@ -1,0 +1,19 @@
+@import '../config/variables';
+
+$component-selector: privacy-policy;
+
+.#{$component-selector} {
+  background: $color-white;
+  min-height: 100%;
+  width: 100%;
+
+  &__content {
+    margin: 0 auto;
+    max-width: $width-tablet;
+    padding: $spacer * 2;
+
+    @media screen and (max-width: $width-mobile) {
+      padding: $spacer;
+    }
+  }
+}

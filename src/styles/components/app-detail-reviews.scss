@@ -1,0 +1,65 @@
+@import '../config/variables';
+@import '../mixins/font-size';
+@import '../mixins/line-height';
+
+$component-selector: app-detail-reviews;
+
+.#{$component-selector} {
+  align-items: center;
+  box-sizing: border-box;
+  color: $color-blackType;
+  display: flex;
+  justify-content: center;
+  padding: $spacer * 8 $spacer * 2;
+  text-align: center;
+  width: 100%;
+
+  &__author {
+    @include font-size(1.4);
+    @include line-height(2.2);
+  }
+
+  > div {
+    max-width: $width-tablet;
+  }
+
+  p {
+    margin-bottom: $spacer * 2;
+  }
+
+  &__review {
+    width: 50%;
+
+    h3 {
+      font-weight: normal;
+      margin-bottom: $spacer;
+    }
+
+    p {
+      @include font-size(1.4);
+      @include line-height(2.2);
+
+      margin: $spacer 0;
+
+      @media screen and (max-width: $width-mobile) {
+        @include font-size(1.2);
+        @include line-height(2);
+      }
+    }
+
+    @media screen and (max-width: $width-tablet) {
+      width: 100%;
+    }
+  }
+
+  &__stars {
+    @include font-size(2.2);
+    @include line-height(2.2);
+
+    margin-bottom: $spacer;
+  }
+
+  @media screen and (max-width: $width-mobile) {
+    padding: $spacer * 4 $spacer * 2;
+  }
+}

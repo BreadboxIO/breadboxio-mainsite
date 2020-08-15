@@ -1,25 +1,25 @@
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
+import { render } from 'react-dom';
 import { Root } from './components/root';
 import { configureStore } from './util/configure-store';
-import createHistory from 'history/createBrowserHistory';
-import { render } from 'react-dom';
 
-export const history = createHistory();
-export const store = configureStore(history);
+export const store = configureStore();
 
-const init = Component => render(
+const init = (Component) =>
+  render(
     <AppContainer>
-        <Component history={history} store={store} />
+      <Component store={store} />
     </AppContainer>,
     document.getElementById('app')
-);
+  );
 
 init(Root);
 
 if (module.hot) {
-    module.hot.accept('./components/root', () => {
-        const nextRoot = require('./components/root').Root;
-        init(nextRoot);
-    });
+  module.hot.accept('./components/root', () => {
+    // eslint-disable-next-line global-require
+    const nextRoot = require('./components/root').Root;
+    init(nextRoot);
+  });
 }

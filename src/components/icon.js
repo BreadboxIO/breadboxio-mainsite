@@ -1,20 +1,31 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import classnames from 'classnames';
 
-export const Icon = props => {
-    const { name, color } = props;
-
-    return (
-        <i className={`fa fa-fw fa-${name}`} aria-hidden='true' style={{ color }} />
-    );
+const TYPES = {
+  brand: 'fab',
+  solid: 'fas',
+  outline: 'far',
 };
 
-Icon.defaultProps = {
-    color: '',
-    name: 'bell-o'
+export const Icon = (props) => {
+  const { className: classNameProp, name, style, type: typeProp } = props;
+  const type = TYPES[typeProp];
+  const className = classnames(classNameProp, `${type} fa-${name}`);
+
+  return <i className={className} style={style} />;
 };
 
 Icon.propTypes = {
-    color: PropTypes.string,
-    name: PropTypes.string
+  className: PropTypes.string,
+  name: PropTypes.string,
+  style: PropTypes.object,
+  type: PropTypes.oneOf(Object.keys(TYPES).map((key) => TYPES[key])),
+};
+
+Icon.defaultProps = {
+  className: '',
+  name: 'bell',
+  style: undefined,
+  type: 'solid',
 };

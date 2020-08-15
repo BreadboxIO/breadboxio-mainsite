@@ -1,7 +1,28 @@
-# Breadbox.io Mainsite
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
+[![GitHub issues](https://img.shields.io/github/issues/DB-Tax-Wealth/mainsite.svg)](https://github.com/DB-Tax-Wealth/mainsite/issues)
+[![GitHub stars](https://img.shields.io/github/stars/DB-Tax-Wealth/mainsite.svg)](https://github.com/DB-Tax-Wealth/mainsite/stargazers)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
+# 🍞 Breadbox.io Mainsite
+
 [![Breadbox.io](http://i.imgur.com/vAw3l8H.png)](http://breadbox.io)
 
-The mainsite for BreadBox.io using [React](https://reactjs.org/) and [Webpack](https://github.com/webpack/webpack).
+An application using [React](https://reactjs.org/) deployed as the Breadbox.io main public website.
+
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+    - [Node.js & Node Package Manager](#nodejs---node-package-manager)
+  - [Installing](#installing)
+- [Development](#development)
+  - [Webpack Dev Server](#webpack-dev-server)
+    - [Hot Reloading](#hot-reloading)
+  - [ESLint and Prettier.io](#eslint-and-prettierio)
+  - [Committing](#committing)
+    - [Pre-Commit Hooks](#pre-commit-hooks)
+- [Deployment](#deployment)
+- [License](#license)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgments)
 
 ## Getting Started
 
@@ -10,62 +31,154 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 #### Node.js & Node Package Manager
-You'll need to download and install Node.js version 6 or higher and Node Package Manager for installing dependencies.  Node Package Manager is installed when installing Node.js.  Download the latest version of Node.js for [macOS](https://nodejs.org/dist/v6.11.0/node-v6.11.0.pkg) or [Windows (64-bit)](https://nodejs.org/dist/v6.11.0/node-v6.11.0-x86.msi).
+
+You'll need to download and install Node.js version 6 or higher and Node Package Manager for installing dependencies. Node Package Manager is installed when installing Node.js. Download the latest version of Node.js for [macOS](https://nodejs.org/dist/v10.16.0/node-v10.16.0.pkg) or [Windows (64-bit)](https://nodejs.org/dist/v10.16.0/node-v10.16.0-x86.msi).
 
 ### Installing
 
-First, you'll need to clone this repo to your working directory on your local machine.  Second, install the project dependencies using Node Package Manager through the command line.
+You'll need to clone this repository to your working directory on your local machine, then install the project dependencies using **Node Package Manager** through the command line.
 
-#### Installing Dependencies
-
-1. Open your command line.
-2. Navigate to your working directory.
-3. Clone this repo to your working directory.
-4. Navigate inside the breadboxio-mainsite directory.
-5. Install the dependencies.
+First, navigate to your working directory:
 
 ```
-cd /path/to/working/directory
-git clone https://github.com/BreadboxIO/breadboxio-mainsite
-cd /breadbox-mainsite
+cd path/to/your/working/directory
+```
+
+Clone this repository to your working directory:
+First clone the repository:
+
+```
+git clone https://github.com/BreadboxIO/breadboxio-mainsite.git
+```
+
+After cloning is complete, navigate inside the newly cloned repository:
+
+```
+cd breadboxio-mainsite
+```
+
+Finally, run `npm install` to install all project dependencies:
+
+```
 npm install
 ```
 
 ## Development
 
-During development you can start the app using `npm run start`.  This will begin running the app at a specificed local server (typically [localhost:8080/](localhost:8080/)).  You can then view the app in any web browser or browser simulator.  Any time you make a change to the `src` folder while the app is running, the app will automatically update in your browser.
+### Webpack Dev Server
+
+During development, this application can be run in a web browser using [Webpack Dev Server](https://webpack.js.org/configuration/dev-server/). To start the application in a web browser, navigate to the root of the project directory in the command line and run `npm run start`. This command will print out a URL which can be opened in a web browser.
+
+First, navigate to the root of the project:
+
+```
+cd path/to/your/working/directory/mainsite
+```
+
+Then start the application:
 
 ```
 npm run start
 ```
 
+After Webpack Dev Server has compiled the development bundle, it will print out something similar to following:
+
+```
+ℹ ｢wds｣: Project is running at http://localhost:9090/
+ℹ ｢wds｣: webpack output is served from /
+ℹ ｢wds｣: 404s will fallback to /index.html
+ℹ ｢wdm｣:
+ℹ ｢wdm｣: Compiled successfully.
+```
+
+Open the URL [http://localhost:9090/](http://localhost:9090/) in your web browser.
+
+#### Hot Reloading
+
+This project is equipped with [Webpack Hot Module Replacement](https://webpack.js.org/concepts/hot-module-replacement/). This means that while Webpack Dev Server is running the documentation application, you can make changes to the files and they will automatically update in the web browser. Occasionally, the web browser may need a manual refresh if you're changes affect application state or changes outside of the React life-cycle.
+
+### ESLint and Prettier.io
+
+This project is equipped with [ESLint](https://eslint.org/) and [Prettier.io](https://prettier.io/) to ensure a homogeneous code-style and JavaScript syntactical error prevention.
+
+During development, you can run `npm run eslint:fix` in the root of the project to automatically fix any fixable [ESLint errors/warnings](.eslintrc), and format your JavaScript to match the [Prettier standards](.prettierrc).
+
+### Committing
+
+To ensure the commit history of this project remains helpful, please use the commit rules outlined [here](https://chris.beams.io/posts/git-commit/) when committing.
+
+To making following these rules easier, this project is equipped with a [Git commit template](.commit.template.txt):
+
+```
+# <type>: (If applied, this commit will...) <subject> (Max 50 char)
+# |<----  Using a Maximum Of 50 Characters  ---->|
+
+
+# Explain why this change is being made
+# |<----   Try To Limit Each Line to a Maximum Of 72 Characters   ---->|
+
+# Provide links or keys to any relevant tickets, articles or other resources
+# Example: Github issue #23
+
+# --- COMMIT END ---
+# Type can be
+#    feat     (new feature)
+#    fix      (bug fix)
+#    refactor (refactoring production code)
+#    style    (formatting, missing semi colons, etc; no code change)
+#    docs     (changes to documentation)
+#    test     (adding or refactoring tests; no production code change)
+#    chore    (updating grunt tasks etc; no production code change)
+# --------------------
+# Remember to
+#    Capitalize the subject line
+#    Use the imperative mood in the subject line
+#    Do not end the subject line with a period
+#    Separate subject from body with a blank line
+#    Use the body to explain what and why vs. how
+#    Can use multiple lines with "-" for bullet points in body
+# --------------------
+```
+
+To enable this Git commit template, run the following command from the root of the project:
+
+```
+git config --global commit.template commit.template.txt
+```
+
+#### Pre-Commit Hooks
+
+This project is equipped with [Git Pre-Commit Hooks](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) to help ensure successful builds. These "hooks" are a set of scripts that will run before allowing a developer to commit to the project. If any of these scripts fail the commit will cancel.
+
+Before allowing a successful commit Git will run the following scripts:
+
+```
+npm run eslint
+npm run stylelint
+```
+
+It's recommended a developers run `npm run eslint:fix` often during development to prevent any failures from code-style or JavaScript syntactical errors.
+
 ## Deployment
 
-After completing development you can run `npm run build`.  This will minifiy and compile the `src` folder into a `public` folder.  The contents of the `public` folder is used for publishing as the [GitHub Pages site](https://github.com/BreadboxIO/breadboxio.github.io).
+This application is hosted on GitHub pages out of the `docs/` directory of this repository's **master** branch. That means anything committed, and pushed to the `docs/` directory of this repo on the master branch will automatically appear at [http://breadbox.io/](http://breadbox.io/).
 
-Once the build task is complete, commit and push the contents of the `public` folder to the [breadboxio.github.io](https://github.com/BreadboxIO/breadboxio.github.io) repository on the `master` branch.  This will automatically update the mainsite at [breadbox.io](http://breadbox.io).
+**NOTE:** It can take several minutes to an hour after a successful push of the master branch for GitHub pages to update.
 
-For more details about publishing to GitHub Pages click [here](https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/#publishing-your-github-pages-site-from-a-docs-folder-on-your-master-branch).
+To deploy this application, simply run the build script `npm run build` from the root of this repository. This script will generate a deployable bundle of the application using Webpack.
 
-```
-npm run build
-```
+`npm run build`
 
-## Built With
-
-* [React](https://reactjs.org/) - A JavaScript library for building user interfaces
-* [Webpack](https://github.com/webpack/webpack) - A JavaScript module bundler
-
-## Authors
-
-* **Joey Schroeder** - *Initial work* - [Breadbox.io](https://github.com/BreadBoxIO)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+After the build is complete, all updated bundle files will be in the `docs/` directory. Commit and push the changes to this directory to master.
 
 ## License
 
 This project is licensed under the MIT License - see the [MIT Open Source Initiative](https://opensource.org/licenses/MIT) for details
 
+## Authors
+
+- **Joey Schroeder** - _Initial work_ - [Breadbox.io](https://github.com/BreadBoxIO)
+
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
+- Hat tip to anyone who's code was used

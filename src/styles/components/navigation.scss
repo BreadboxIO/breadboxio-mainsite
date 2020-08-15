@@ -1,0 +1,88 @@
+@import '../config/variables';
+@import '../mixins/transition';
+@import '../mixins/font-size';
+@import '../mixins/line-height';
+
+$component-selector: navigation;
+
+.#{$component-selector} {
+  @include font-size(1.8);
+  @include line-height(1.8);
+
+  font-family: $font-secondary;
+  display: flex;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 50%;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+
+  a,
+  button {
+    @include transition(#{'color, opacity'});
+
+    @extend .animated;
+
+    color: $color-white;
+    display: block;
+    padding: $spacer * 1.5 0 $spacer * 1.5 $spacer;
+    text-decoration: none;
+    opacity: 0;
+    position: relative;
+
+    &::after {
+      @include transition(transform, $duration-base * 3);
+
+      border-bottom: $border-width solid $color-primary;
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      transform: translateX(100%);
+    }
+
+    &:hover {
+      color: $color-primary;
+
+      &::after {
+        transform: translateX(0);
+      }
+    }
+
+    @for $index from 1 through 5 {
+      &:nth-child(#{$index}) {
+        animation-delay: $index * $duration-base / 2;
+      }
+    }
+
+    @media screen and (max-width: $width-mobile) {
+      @include font-size(1.6);
+      @include line-height(1.6);
+    }
+  }
+
+  &--active {
+    a,
+    button {
+      @extend .fadeInRight;
+
+      opacity: 1;
+    }
+  }
+
+  @media print {
+    display: none;
+  }
+
+  @media screen and (max-width: $width-mobile) {
+    letter-spacing: 2px;
+  }
+}

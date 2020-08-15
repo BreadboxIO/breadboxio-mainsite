@@ -6,14 +6,14 @@ const UPDATE = 'test/UPDATE';
 const RESET = 'test/RESET';
 
 export default handleActions(
-    {
-        [RESET]: state => Object.assign({}, state, {  testProp: DEFAULT_STATE.testProp }),
-        [UPDATE]: state => {
-            const { testProp } = state;
-            return Object.assign({}, state, { testProp: testProp + 1 });
-        }
+  {
+    [RESET]: (state) => ({ ...state, testProp: DEFAULT_STATE.testProp }),
+    [UPDATE]: (state) => {
+      const { testProp } = state;
+      return { ...state, testProp: testProp + 1 };
     },
-    DEFAULT_STATE
+  },
+  DEFAULT_STATE
 );
 
 export const updateTestProp = createAction(UPDATE);

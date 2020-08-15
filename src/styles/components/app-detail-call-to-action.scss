@@ -1,0 +1,55 @@
+@import '../config/variables';
+@import '../mixins/transition';
+@import '../mixins/font-size';
+@import '../mixins/line-height';
+
+$component-selector: app-detail-call-to-action;
+
+.#{$component-selector} {
+  display: flex;
+  width: 100%;
+  padding: $spacer * 8 $spacer * 2;
+  box-sizing: border-box;
+  color: $color-blackType;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  a {
+    @include font-size(1.8);
+    @include line-height(2.2);
+    @include transition(#{'border-color, color'});
+
+    border-radius: $border-radius;
+    border: $border-width solid $color-blackType;
+    color: $color-blackType;
+    display: inline-block;
+    padding: $spacer;
+    text-decoration: none;
+
+    &:hover {
+      border-color: $color-white;
+      color: $color-white;
+    }
+  }
+
+  > div {
+    max-width: $width-tablet;
+  }
+
+  h2 {
+    @include font-size(3.2);
+    @include line-height(3.6);
+
+    font-weight: bold;
+  }
+
+  p {
+    color: $color-blackType;
+    margin-bottom: $spacer * 2;
+  }
+
+  @media screen and (max-width: $width-mobile) {
+    padding: $spacer * 4 $spacer * 2;
+  }
+}

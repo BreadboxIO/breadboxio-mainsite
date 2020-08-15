@@ -1,9 +1,0 @@
-$font-folder: 'beafis/';
-$font-name: 'Beafis';
-
-@font-face {
-    font-family: $font-name;
-    font-style: normal;
-    font-weight: bold;
-    src: url($font-path + $font-folder + 'beafis-bold-webfont.woff') format('woff');
-}

@@ -1,0 +1,15 @@
+@import '../config/variables';
+
+$component-selector: brand-logo;
+
+.#{$component-selector} {
+  height: $spacer * 6;
+
+  &__background {
+    fill: $color-secondary;
+  }
+
+  &__foreground {
+    fill: $color-white;
+  }
+}

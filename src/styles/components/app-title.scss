@@ -1,0 +1,43 @@
+@import '../config/variables';
+@import '../mixins/font-size';
+
+$component-selector: app-title;
+
+.#{$component-selector} {
+  display: flex;
+  flex-direction: row;
+
+  .app-icon {
+    margin-right: $spacer;
+
+    @media screen and (max-width: $width-mobile) {
+      margin-right: 0;
+    }
+  }
+
+  &__breadbox-logo {
+    font-family: $font-primary;
+  }
+
+  h1 {
+    @include font-size(4.8);
+
+    line-height: $spacer * 5;
+    text-transform: lowercase;
+    margin-bottom: 0;
+
+    @media screen and (max-width: $width-mobile) {
+      @include font-size(3.2);
+      @include line-height(3.6);
+    }
+  }
+
+  @media screen and (max-width: $width-tablet) {
+    justify-content: center;
+  }
+
+  @media screen and (max-width: $width-mobile) {
+    flex-direction: column;
+    align-items: center;
+  }
+}

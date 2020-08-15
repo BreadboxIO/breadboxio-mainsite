@@ -1,0 +1,7 @@
+@import '../config/variables';
+
+@mixin make-column-offset($size, $columns: $grid-columns) {
+  $num: $size / $columns;
+
+  margin-left: if($num == 0, 0, percentage($num));
+}

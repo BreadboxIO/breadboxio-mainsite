@@ -1,0 +1,83 @@
+@import '../config/variables';
+@import '../mixins/font-size';
+@import '../mixins/line-height';
+
+$component-selector: invoice-table;
+
+$border-color: lighten($color-secondary, 58%);
+$border: $border-width * 2 solid $border-color;
+
+.#{$component-selector} {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  &__data-row {
+    @include font-size(1.2);
+    @include line-height(1.2);
+
+    .#{$component-selector}__table-cell {
+      padding: $spacer $spacer * 2;
+    }
+  }
+
+  &__footer {
+    margin-top: $spacer * 8;
+
+    .#{$component-selector}__table-cell {
+      border-bottom: none;
+      border-top: $border;
+      padding: $spacer * 2;
+    }
+
+    &__total-label {
+      border: none !important;
+      background: lighten($color-secondary, 58%);
+    }
+
+    &__total-value {
+      border: none !important;
+      color: $color-white;
+      background: $color-primary;
+    }
+  }
+
+  &__heading {
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &__cell {
+      flex: 1;
+      border-left: $border;
+
+      &:first-child,
+      &:last-child {
+        border-left: none;
+      }
+    }
+  }
+
+  &__spacer {
+    border: none !important;
+  }
+
+  &__table-cell {
+    box-sizing: border-box;
+    border-bottom: $border;
+    padding: $spacer * 2;
+    flex: 1;
+
+    &:first-child {
+      padding-left: $spacer * 6;
+    }
+
+    &:last-child {
+      padding-right: $spacer * 6;
+    }
+  }
+
+  &__table-row {
+    display: flex;
+    flex: 1;
+  }
+}

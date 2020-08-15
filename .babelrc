@@ -1,15 +1,24 @@
-
 {
-  "sourceMaps": true,
   "presets": [
-    ["env", {
-      "targets": { "browsers": ["last 2 versions"] },
-      "loose" : true
-    }],
-    "react",
-    "stage-0"
+    "@babel/preset-env",
+    "@babel/preset-react"
   ],
   "plugins": [
-    ["react-hot-loader/babel"]
-  ]
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-runtime",
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        "react-hot-loader/babel"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "@babel/plugin-transform-react-constant-elements",
+        "lodash",
+        "transform-react-pure-class-to-function"
+      ]
+    }
+  }
 }

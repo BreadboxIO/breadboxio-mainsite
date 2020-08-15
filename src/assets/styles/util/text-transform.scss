@@ -1,7 +1,0 @@
-@import '../config/variables';
-
-$component-selector: text-transform;
-
-.#{$component-selector}--uppercase {
-    text-transform: uppercase !important;
-}

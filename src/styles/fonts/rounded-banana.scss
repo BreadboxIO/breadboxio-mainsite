@@ -1,0 +1,44 @@
+$font-folder: 'rounded-banana/';
+$font-name: 'Rounded Banana';
+
+@font-face {
+  font-family: $font-name;
+  font-style: normal;
+  font-weight: bold;
+  src: url($font-path + $font-folder + 'roundedbanana-bold-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: $font-name;
+  font-style: italic;
+  font-weight: bold;
+  src: url($font-path + $font-folder + 'roundedbanana-bolditalic-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: $font-name;
+  font-style: italic;
+  font-weight: normal;
+  src: url($font-path + $font-folder + 'roundedbanana-italic-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: $font-name;
+  font-style: normal;
+  font-weight: 100;
+  src: url($font-path + $font-folder + 'roundedbanana-light-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: $font-name;
+  font-style: italic;
+  font-weight: 100;
+  src: url($font-path + $font-folder + 'roundedbanana-lightitalic-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: $font-name;
+  font-style: normal;
+  font-weight: normal;
+  src: url($font-path + $font-folder + 'roundedbanana-regular-webfont.woff') format('woff');
+}

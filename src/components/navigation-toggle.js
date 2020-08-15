@@ -1,22 +1,26 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const NavigationToggle = props => {
-    const { onClick, navigationActive } = props;
+export const NavigationToggle = (props) => {
+  const { onClick, navigationActive } = props;
 
-    return (
-        <button className={`navigation-toggle${navigationActive ? ' navigation-toggle--navigation-active' : ''}`} onClick={onClick}>
-            <span />
-        </button>
-    );
+  return (
+    <button
+      className={`navigation-toggle${navigationActive ? ' navigation-toggle--navigation-active' : ''}`}
+      onClick={onClick}
+      type="button"
+    >
+      <span />
+    </button>
+  );
 };
 
 NavigationToggle.defaultProps = {
-    onClick: () => {},
-    navigationActive: false
+  onClick: () => {},
+  navigationActive: false,
 };
 
 NavigationToggle.propTypes = {
-    onClick: PropTypes.func,
-    navigationActive: PropTypes.bool
+  onClick: PropTypes.func,
+  navigationActive: PropTypes.bool,
 };

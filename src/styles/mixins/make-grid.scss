@@ -1,0 +1,70 @@
+@import '../config/variables';
+@import 'breakpoint-infix';
+@import 'media-breakpoint-up';
+@import 'make-column-widths';
+@import 'make-column-offset';
+
+@mixin make-grid($columns: $grid-columns, $gutter: $grid-gutter, $breakpoints: $grid-breakpoints) {
+  // Common properties for all breakpoints
+  %grid-column {
+    min-height: 1px; // Prevent columns from collapsing when empty
+    padding-left: $gutter / 2;
+    padding-right: $gutter / 2;
+    position: relative;
+    width: 100%;
+  }
+
+  @each $breakpoint in map-keys($breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $breakpoints); // Allow columns to stretch full width below their breakpoints
+
+    @for $i from 1 through $columns {
+      .column#{$infix}-#{$i} {
+        @extend %grid-column;
+      }
+    }
+
+    .column#{$infix},
+    .column#{$infix}-auto {
+      @extend %grid-column;
+    }
+
+    @include media-breakpoint-up($breakpoint, $breakpoints) {
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .column#{$infix} {
+        flex-grow: 1;
+        max-width: 100%;
+      }
+
+      .column#{$infix}-auto {
+        flex: 0 0 auto;
+        max-width: none; // Reset earlier grid tiers
+        width: auto;
+      }
+
+      @for $i from 1 through $columns {
+        .column#{$infix}-#{$i} {
+          @include make-column-widths($i, $columns);
+        }
+      }
+
+      .order#{$infix}-first {
+        order: -1;
+      }
+
+      @for $i from 1 through $columns {
+        .order#{$infix}-#{$i} {
+          order: $i;
+        }
+      }
+
+      @for $i from 0 through ($columns - 1) {
+        @if not($infix == '' and $i == 0) {
+          // Avoid emitting useless .offset-0
+          .offset#{$infix}-#{$i} {
+            @include make-column-offset($i, $columns);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@import '../config/variables';
+@import '../mixins/transition';
+
+a {
+  @include transition(color, $duration-base / 2);
+
+  border-radius: 0;
+  color: $color-tertiary;
+
+  &:hover {
+    color: darken($color-tertiary, 15%);
+  }
+}

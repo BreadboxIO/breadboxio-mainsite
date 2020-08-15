@@ -1,8 +1,0 @@
-@import '../config/variables';
-
-$component-selector: animated;
-
-.#{$component-selector} {
-    animation-duration: $duration-base * 3;
-    animation-delay: $duration-base;
-}

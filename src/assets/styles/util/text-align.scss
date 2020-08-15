@@ -1,7 +1,0 @@
-@import '../config/variables';
-
-$component-selector: text-align;
-
-.#{$component-selector}--right {
-    text-align: right !important;
-}

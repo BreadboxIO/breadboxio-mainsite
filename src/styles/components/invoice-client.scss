@@ -1,0 +1,36 @@
+@import '../mixins/font-size';
+@import '../mixins/line-height';
+@import '../config/variables';
+
+$component-selector: invoice-client;
+
+.#{$component-selector} {
+  align-items: center;
+  background: lighten($color-secondary, 58%);
+  display: flex;
+  flex-direction: row;
+  padding: $spacer * 4 $spacer * 6;
+
+  &__client-detail {
+    flex: 3;
+  }
+
+  &__icon {
+    @include font-size(3);
+    @include line-height(3);
+
+    align-items: center;
+    background: $color-white;
+    border-radius: 50%;
+    display: flex;
+    height: $spacer * 7;
+    justify-content: center;
+    margin-right: $spacer * 2;
+    width: $spacer * 7;
+  }
+
+  &__retailer-detail {
+    flex: 3;
+    text-align: right;
+  }
+}

@@ -4,44 +4,42 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 export class BlockButton extends Component {
-    static propTypes = {
-        onClick: PropTypes.func,
-        disabled: PropTypes.bool,
-        color: PropTypes.string,
-        className: PropTypes.string,
-        children: PropTypes.oneOfType([ PropTypes.arrayOf(PropTypes.node), PropTypes.node ]).isRequired
-    };
+  static propTypes = {
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+    className: PropTypes.string,
+    color: PropTypes.string,
+    disabled: PropTypes.bool,
+    onClick: PropTypes.func,
+  };
 
-    static defaultProps = {
-        disabled: false,
-        color: '',
-        className: '',
-        children: null
-    };
+  static defaultProps = {
+    className: '',
+    color: '',
+    disabled: false,
+    onClick: undefined,
+  };
 
-    renderClassNames() {
-        const { color, className } = this.props;
+  renderClassNames() {
+    const { color, className } = this.props;
 
-        const result = classNames(
-            'block-button',
-            className,
-            {
-                [`block-button--${color}`]: color
-            }
-        );
+    const result = classNames('block-button', className, {
+      [`block-button--${color}`]: color,
+    });
 
-        return result;
-    }
+    return result;
+  }
 
-    render() {
-        const { children, disabled, onClick } = this.props;
+  render() {
+    const { children, disabled, onClick } = this.props;
 
-        if (!children) return null;
+    if (!children) return null;
 
-        const className = this.renderClassNames();
+    const className = this.renderClassNames();
 
-        return (
-            <button onClick={onClick} disabled={disabled} className={className}>{children}</button>
-        );
-    }
+    return (
+      <button onClick={onClick} disabled={disabled} className={className} type="button">
+        {children}
+      </button>
+    );
+  }
 }

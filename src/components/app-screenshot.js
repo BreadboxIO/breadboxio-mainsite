@@ -1,48 +1,38 @@
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
+import iPhoneImage from '../images/apps/iphone.png';
 
 export class AppScreenshot extends Component {
-    static propTypes = {
-        images: PropTypes.array.isRequired,
-    };
+  static propTypes = {
+    images: PropTypes.array.isRequired,
+  };
 
-    static defaultProps = {
-        images: []
-    };
+  renderScreenshots() {
+    const { images } = this.props;
+    const result = [];
 
-    renderScreenshots() {
-        const { images } = this.props;
-        const result = [];
+    images.forEach((image, index) => {
+      result.push(<div key={index} style={{ backgroundImage: `url(${image})` }} />);
+    });
 
-        images.forEach((image, index) => {
-            result.push(
-                <div
-                    key={index}
-                    style={{ backgroundImage: `url(${image})`}}
-                />
-            );
-        });
+    return result;
+  }
 
-        return result;
-    }
+  render() {
+    const { images } = this.props;
 
-    render() {
-        const { images } = this.props;
+    if (images.length < 1) return null;
 
-        if (images.length < 1) return null;
+    const screenshots = this.renderScreenshots();
 
-        const screenshots = this.renderScreenshots();
-
-        return (
-            <div className='app-screenshot'>
-                <div className='app-screenshot__iphone'>
-                    <img src={require('../assets/images/apps/iphone.png')} />
-                </div>
-                <div className='app-screenshot__screenshots'>
-                    {screenshots}
-                </div>
-            </div>
-        );
-    }
+    return (
+      <div className="app-screenshot">
+        <div className="app-screenshot__iphone">
+          <img src={iPhoneImage} alt="iPhone screenshot" />
+        </div>
+        <div className="app-screenshot__screenshots">{screenshots}</div>
+      </div>
+    );
+  }
 }

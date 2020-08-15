@@ -1,122 +1,121 @@
-import clean from './webpack/clean';
-import copyFile from './webpack/copy-file';
-import devServer from './webpack/dev-server';
-import extractSCSS from './webpack/extract-scss';
-import generateFavicons from './webpack/generate-favicons';
-import generateHTML from './webpack/generate-html';
-import generateSourcemaps from './webpack/generate-sourcemaps';
-import lintJavascript from './webpack/lint-javascript';
-import lintStyles from './webpack/lint-styles';
-import loadFonts from './webpack/load-fonts';
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import TerserWebpackPlugin from 'terser-webpack-plugin';
+import merge from 'webpack-merge';
+import path from 'path';
+import { clean } from './webpack/clean';
+import { copyFiles } from './webpack/copy-files';
+import { devServer } from './webpack/dev-server';
+import { getFavicons } from './webpack/get-favicons';
+import { getHtml } from './webpack/get-html';
+import { getSourcemaps } from './webpack/get-sourcemaps';
+import { loadFiles } from './webpack/load-files';
+import { loadFonts } from './webpack/load-fonts';
 import loadImages from './webpack/load-images';
-import loadJavascript from './webpack/load-javascript';
-import minifyJavascript from './webpack/minify-javascript';
-// import purifyCSS from './webpack/purify-css';
-import setFreeVariable from './webpack/set-free-variable';
-import setupSCSS from './webpack/setup-scss';
+import { loadJs } from './webpack/load-js';
+import { loadStyles } from './webpack/load-styles';
 
-const webpack = require('webpack');
-const path = require('path');
-const merge = require('webpack-merge');
+const PUBLIC_PATH = '/';
 
 const ROOT_PATHS = {
-    src: path.join(__dirname, 'src'),
-    public: path.join(__dirname, 'public')
+  dist: path.join(__dirname, 'docs'),
+  src: path.join(__dirname, 'src'),
 };
 
-const PATHS = {
-    cname: path.join(__dirname, 'CNAME'),
-    fonts: path.join(ROOT_PATHS.src, 'assets/fonts'),
-    images: path.join(ROOT_PATHS.src, 'assets/images'),
-    styles: [
-        path.join(ROOT_PATHS.src, 'assets/styles', 'critical.scss'),
-        path.join(ROOT_PATHS.src, 'assets/styles', 'index.scss')
-    ]
+const statConfig = {
+  stats: {
+    all: undefined,
+    assets: true,
+    builtAt: true,
+    cached: false,
+    cachedAssets: false,
+    children: false,
+    chunkGroups: false,
+    chunkModules: false,
+    chunkOrigins: false,
+    chunks: false,
+    colors: true,
+    depth: false,
+    entrypoints: false,
+    env: true,
+    errorDetails: true,
+    errors: true,
+    hash: true,
+    maxModules: 15,
+    modules: false,
+    performance: true,
+    providedExports: false,
+    publicPath: true,
+    reasons: true,
+    source: false,
+    timings: true,
+    usedExports: false,
+    version: true,
+    warnings: false,
+  },
 };
 
-const common = merge([
-    {
-        entry: {
-            app: ['react-hot-loader/patch', path.join(ROOT_PATHS.src, 'index.js')],
-            style: PATHS.styles
+const entryConfig = {
+  entry: path.join(ROOT_PATHS.src, 'index.js'),
+};
+
+const outputConfig = {
+  output: {
+    filename: '[name]-[hash].js',
+    path: ROOT_PATHS.dist,
+    publicPath: PUBLIC_PATH,
+  },
+};
+
+const optimizationConfig = {
+  optimization: {
+    minimizer: [new OptimizeCSSAssetsPlugin(), new TerserWebpackPlugin()],
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          chunks: 'initial',
+          name: 'vendor',
+          test: /[\\/]node_modules[\\/]/,
         },
-        output: {
-            path: ROOT_PATHS.public,
-            filename: '[name].[hash].js'
-        },
-        plugins: [ new webpack.optimize.CommonsChunkPlugin({ name: ['app'] }) ]
+      },
     },
-    generateHTML({ title: 'Breadbox.io', template: path.join(ROOT_PATHS.src, 'index.html') }),
-    generateFavicons({ sourcePath: path.join(PATHS.images, 'favicon.png') }),
-    loadFonts({
-        options: {
-            limit: 5000,
-            name: 'fonts/[name].[hash].[ext]'
-        }
-    }),
-    loadJavascript({ include: ROOT_PATHS.src }),
-    loadImages({
-        options: {
-            limit: 15000,
-            name: 'images/[name].[hash].[ext]'
-        }
-    })
+  },
+};
+
+const commonConfig = merge([
+  entryConfig,
+  getHtml({ title: 'Breadbox.io', template: path.join(ROOT_PATHS.src, 'index.html') }),
+  loadJs({ include: ROOT_PATHS.src, exclude: '/node_modules/', options: { cacheDirectory: true } }),
 ]);
 
-export default env => {
-    if (env === 'production') {
+const developmentConfig = merge([
+  commonConfig,
+  devServer({ host: 'localhost', port: 9090 }),
+  getSourcemaps({ type: 'cheap-module-eval-source-map' }),
+  loadFiles({ name: '[name].[ext]' }),
+  loadFonts({ options: { name: '[name].[ext]' } }),
+  loadImages({ options: { limit: 15000, name: 'images/[name].[ext]' } }),
+  loadStyles({}),
+  { output: { publicPath: '/' } },
+]);
 
-        return merge([
-            common,
-            {
-                performance: {
-                    hints: 'warning',
-                    maxAssetSize: 50000, // in bytes
-                    maxEntrypointSize: 100000 // in bytes
-                },
-                output: {
-                    chunkFilename: '[chunkhash].js',
-                    filename: '[name].[chunkhash].js',
-                    path: PATHS.public
-                },
-                plugins: [ new webpack.optimize.OccurrenceOrderPlugin() ]
-            },
-            setFreeVariable(
-                'process.env.NODE_ENV',
-                'production'
-            ),
-            clean(ROOT_PATHS.public),
-            copyFile({ sourcePath: PATHS.cname, destPath: ROOT_PATHS.public }),
-            copyFile({ sourcePath: path.join(__dirname, '404.html'), destPath: ROOT_PATHS.public }),
-            minifyJavascript({ useSourceMap: false }),
-            extractSCSS(PATHS.style)
-            // purifyCSS([ROOT_PATHS.src])
-        ]);
-    }
+const productionConfig = merge([
+  clean(ROOT_PATHS.dist),
+  commonConfig,
+  copyFiles({ from: path.join(ROOT_PATHS.src, 'CNAME'), to: path.join(ROOT_PATHS.dist) }),
+  copyFiles({ from: path.join(ROOT_PATHS.src, '404.html'), to: path.join(ROOT_PATHS.dist, '404.html') }),
+  copyFiles({ from: path.join(ROOT_PATHS.src, 'robots.txt'), to: path.join(ROOT_PATHS.dist, 'robots.txt') }),
+  getFavicons({ sourcePath: path.join(ROOT_PATHS.src, '/images/favicon.png') }),
+  loadFonts({ options: { limit: 5000, name: 'fonts/[name].[ext]' } }),
+  loadImages({ options: { limit: 5000, name: 'images/[name].[ext]' } }),
+  loadStyles({ production: true }),
+  optimizationConfig,
+  outputConfig,
+  statConfig,
+]);
 
-    return merge([
-        common,
-        {
-            output: { devtoolModuleFilenameTemplate: 'file://[absolute-resource-path]' },
-            performance: { hints: false },
-            plugins: [ new webpack.NamedModulesPlugin() ]
-        },
-        generateSourcemaps({ type: 'cheap-module-eval-source-map' }),
-        setupSCSS(PATHS.style),
-        devServer({
-            host: process.env.HOST,
-            port: process.env.PORT
-        }),
-        lintStyles(PATHS.style),
-        lintJavascript({
-            include: PATHS.src,
-            exclude: /node_modules/,
-            options: {
-                failOnWarning: false,
-                failOnError: true,
-                fix: false,
-                emitWarning: true
-            }
-        })
-    ]);
+export default (mode) => {
+  process.env.BABEL_ENV = mode;
+
+  if (mode === 'production') return merge(productionConfig, { mode });
+  return merge(developmentConfig, { mode });
 };

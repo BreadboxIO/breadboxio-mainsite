@@ -1,0 +1,44 @@
+@import '../config/variables';
+@import '../mixins/transition';
+@import '../mixins/momentum-scrolling';
+
+$component-selector: app;
+
+.#{$component-selector} {
+  background-color: $color-secondary;
+  background-image: url('../images/bg-forest.jpg');
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  perspective: 1500px;
+  display: flex;
+
+  &__screen {
+    @include transition(#{'transform, border-radius'}, $duration-base * 3);
+    @include momentum-scrolling();
+
+    border-radius: 0;
+    height: 100%;
+    left: 0;
+    overflow-y: auto;
+    position: relative;
+    top: 0;
+    transform-origin: 50% 50%;
+    width: 100%;
+    z-index: 20;
+
+    .#{$component-selector}--navigation-active & {
+      border-radius: $border-radius * 3;
+      overflow: hidden !important; // this important is necessary because postCSS is adding previous browser versions that override it, as browsers update their CSS support this should be able to be removed.
+      transform: translateX(-40%) rotateY(45deg) translateZ(-50px);
+    }
+  }
+
+  @media print {
+    background-color: $color-white;
+    background-image: none;
+  }
+}

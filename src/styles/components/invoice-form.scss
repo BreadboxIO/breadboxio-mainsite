@@ -1,0 +1,54 @@
+@import '../mixins/font-size';
+@import '../mixins/line-height';
+@import '../config/variables';
+
+$component-selector: invoice-form;
+
+.#{$component-selector} {
+  @include font-size(1.4);
+  @include line-height(2.2);
+
+  background: $color-white;
+  padding: $spacer * 8 $spacer * 4;
+  width: 100%;
+
+  .block-button {
+    margin-bottom: $spacer;
+  }
+
+  &__container {
+    margin: 0 auto;
+    min-height: 100%;
+    max-width: $width-tablet;
+  }
+
+  &__input {
+    margin-bottom: $spacer;
+  }
+
+  &__invoice-item {
+    border-radius: $border-radius;
+    padding: $spacer;
+    margin-top: $spacer / 2;
+    background: lighten($color-secondary, 55%);
+  }
+
+  &__section {
+    background: lighten($color-secondary, 58%);
+    border-radius: $border-radius;
+    margin: $spacer * 2 0;
+    padding: $spacer * 2;
+
+    @media screen and (max-width: $width-tablet) {
+      margin: $spacer 0;
+    }
+  }
+
+  @media print {
+    display: none;
+  }
+
+  @media screen and (max-width: $width-tablet) {
+    padding: $spacer * 4 $spacer * 2;
+  }
+}

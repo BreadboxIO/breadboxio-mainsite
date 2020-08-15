@@ -1,0 +1,23 @@
+@import '../config/variables';
+@import '../mixins/transition';
+
+input {
+  @include transition(#{'color, border-color'}, $duration-base / 2);
+
+  -webkit-appearance: none;
+  border-radius: $border-radius;
+  border: $border-width solid lighten($color-secondary, 58%);
+  box-sizing: border-box;
+  color: $color-secondary;
+  padding: $spacer / 2;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-color: $color-secondary;
+  }
+
+  &::placeholder {
+    color: lighten($color-secondary, 35%);
+  }
+}

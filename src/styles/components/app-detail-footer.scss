@@ -1,0 +1,42 @@
+@import '../config/variables';
+@import '../mixins/transition';
+@import '../mixins/font-size';
+@import '../mixins/line-height';
+
+$component-selector: app-detail-footer;
+
+.#{$component-selector} {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: $spacer * 4 $spacer * 2 $spacer * 8;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  a {
+    @include font-size(2.6);
+    @include line-height(3);
+    @include transition(color);
+
+    color: $color-grey;
+    display: inline-block;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-blackType;
+    }
+  }
+
+  p {
+    @include font-size(1.2);
+    @include line-height(1.6);
+
+    margin-bottom: $spacer * 2;
+  }
+
+  @media screen and (max-width: $width-mobile) {
+    padding: $spacer * 2 $spacer * 2 $spacer * 4;
+  }
+}

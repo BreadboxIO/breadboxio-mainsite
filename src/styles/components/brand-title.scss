@@ -1,0 +1,14 @@
+@import '../config/variables';
+
+$component-selector: brand-title;
+
+.#{$component-selector} {
+  font-weight: bold;
+  letter-spacing: -5px;
+  margin: 0;
+  text-transform: lowercase;
+
+  span {
+    font-weight: normal;
+  }
+}

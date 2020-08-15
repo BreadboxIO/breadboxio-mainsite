@@ -1,0 +1,13 @@
+@import '../config/variables';
+@import '../mixins/font-size';
+@import '../mixins/line-height';
+
+body {
+  @include font-size(1.2);
+  @include line-height(1.8);
+
+  color: $color-secondary;
+  font-family: $font-primary;
+  letter-spacing: -1px;
+  overflow: hidden;
+}
