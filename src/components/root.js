@@ -7,6 +7,7 @@ import { RideOrDiePrivacyPolicyScreen } from '../screens/ride-or-die-privacy-pol
 import { InvoiceGeneratorScreen } from '../screens/invoice-generator';
 import { App } from './app';
 import { SplashScreen } from '../screens/splash';
+import { BMRCalculatorPrivacyPolicyScreen } from '../screens/bmr-calculator-privacy-policy';
 
 export const Root = (props) => {
   const { store } = props;
@@ -16,9 +17,10 @@ export const Root = (props) => {
       <BrowserRouter>
         <App>
           <Route exact path="/" component={SplashScreen} />
+          <Route path="/bmr-calculator-privacy-policy" component={BMRCalculatorPrivacyPolicyScreen} />
+          <Route path="/invoice-generator" component={InvoiceGeneratorScreen} />
           <Route path="/ride-or-die-app" component={RideOrDieAppScreen} />
           <Route path="/ride-or-die-privacy-policy" component={RideOrDiePrivacyPolicyScreen} />
-          <Route path="/invoice-generator" component={InvoiceGeneratorScreen} />
         </App>
       </BrowserRouter>
     </Provider>
