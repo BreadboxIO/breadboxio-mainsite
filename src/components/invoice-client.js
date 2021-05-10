@@ -32,8 +32,8 @@ export const InvoiceClient = (props) => {
       </div>
       <div className="invoice-client__retailer-detail">
         <h1>Breadbox LLC</h1>
-        <h2>1219 62nd Street #204</h2>
-        <h2>Wauwatosa, WI 53213</h2>
+        <h2>2534 S Kinnickinnic Ave, STE #201</h2>
+        <h2>Milwaukee, WI 53207</h2>
       </div>
     </div>
   );
