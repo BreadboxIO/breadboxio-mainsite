@@ -73,9 +73,9 @@ export class InvoiceTableFooter extends Component {
               Deliver check to sales rep or mail to:
             </p>
             <p>
-              <strong>Breadbox LLC</strong> · 1219 62nd St #204, Wauwatosa, WI 53213
+              <strong>Breadbox LLC</strong> · 2534 S Kinnickinnic Ave, STE #201, Milwaukee, WI 53207
               <br />
-              (414) 614-0628 · <a href="mailto:contact@breadbox.io">contact@breadbox.io</a>
+              (262) 902-7830 · <a href="mailto:contact@breadbox.io">contact@breadbox.io</a>
             </p>
           </InvoiceTableCell>
           <InvoiceTableCell spacer />
